@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Zadatak1 {
     public static void main(String[] args){
+
         int a, b;
         Scanner unos=new Scanner(System.in);
         System.out.println("Unesite prvi broj: ");
