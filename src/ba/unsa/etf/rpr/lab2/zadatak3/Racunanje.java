@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.lab2.zadatak3;
 import java.util.ArrayList;
+import java.lang.Math;
 import java.util.List;
 
 public class Racunanje {
@@ -33,5 +34,16 @@ public class Racunanje {
         medijana = sumaBrojeva / uneseniBrojevi.size();
 
         return medijana;
+    }
+
+    public static Double standardnaDevijacija(List<Integer> uneseniBrojevi){
+        double medijana = Racunanje.mean(uneseniBrojevi);
+        double standardnaDev = 0;
+
+        for(int i = 0; i < uneseniBrojevi.get(i); i++) standardnaDev = standardnaDev + Math.pow(uneseniBrojevi.get(i)-medijana,2);
+
+        double vrati = Math.sqrt(standardnaDev/uneseniBrojevi.size());
+
+        return vrati;
     }
 }
