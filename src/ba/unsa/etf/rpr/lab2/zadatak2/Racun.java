@@ -3,10 +3,10 @@ package ba.unsa.etf.rpr.lab2.zadatak2;
 public class Racun {
 
     private Double prekoracenje; // potrebno zbog metode odobriPrekoracenje
-    private Long brojRacuna;
-    private Osoba korisnikRacuna;
-    private boolean odobrenjePrekoracenja;
-    private Double stanjeRacuna;
+    protected Long brojRacuna;
+    protected Osoba korisnikRacuna;
+    protected boolean odobrenjePrekoracenja;
+    protected Double stanjeRacuna;
 
     public Racun(Long brojRacuna, Osoba korisnikRacuna) {
         this.brojRacuna = brojRacuna;
@@ -35,4 +35,5 @@ public class Racun {
     public void odobriPrekoracenje(Double prekoracenje){
         this.prekoracenje = prekoracenje;
     }
+
 }
