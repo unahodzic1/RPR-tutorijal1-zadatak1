@@ -23,6 +23,6 @@ public class Main {
         System.out.println("Minimum je: " + Racunanje.min(uneseniBrojevi));
         System.out.println("Maksimum je: " + Racunanje.max(uneseniBrojevi));
         System.out.println("Medijana iznosi: " + Racunanje.mean(uneseniBrojevi));
-       // System.out.println("Standardna devijacija iznosi: " + Racunanje.standardnaDevijacija(uneseniBrojevi));
+        System.out.println("Standardna devijacija iznosi: " + Racunanje.standardnaDevijacija(uneseniBrojevi));
     }
 }
