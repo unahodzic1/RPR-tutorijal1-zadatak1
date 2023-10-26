@@ -10,7 +10,7 @@ public class Main {
             System.out.println("Faktorijel broja iznosi: " + Racunanje.faktorijel(a));
         }
         else{
-            System.out.println("Ocekivan je ulaz velicine 1");
+            System.out.println("Ocekivan je ulaz velicine 1.");
         }
     }
 }
