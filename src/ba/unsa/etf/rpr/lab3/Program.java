@@ -31,6 +31,8 @@ public class Program {
 
                         System.out.println("Unesite zeljeno ime: ");
                         String ime1 = Program.unosStringa();
+                        TelefonskiBroj broj1 = Program.unosBroja();
+                        imenik.dodaj(ime1, broj1);
 
                         break;
 
@@ -44,11 +46,30 @@ public class Program {
                         break;
 
                     case 3:
+                        // ispis imena po broju
+
+                        System.out.println("Unesite broj: ");
+                        TelefonskiBroj broj3 = Program.unosBroja();
+                        if(imenik.dajIme(broj3) != null) System.out.println("Ime: " + imenik.dajIme(broj3));
+                        else System.out.println("U imeniku ne postoji osoba sa tim brojem!");
                         break;
+
                     case 4:
+                        // naSlovo
+
+                        System.out.println("Unesite slovo: ");
+                        String unos4 = Program.unosStringa();
+                        char slovo = unos4.charAt(0);
+                        if(imenik.naSlovo(slovo) != null) imenik.naSlovo(slovo);
+                        else System.out.println("U imeniku ne postoji osoba cije ime pocinje na to slovo!");
                         break;
+
                     case 5:
+                        // izGrada
+                        String grad = Program.unosStringa();
+
                         break;
+
                     case 6:
                         break;
                     default:
@@ -77,7 +98,7 @@ public class Program {
         System.out.println("Unesite broj za zeljeni tip: " +
                 "1 za fiksni," +
                 "2 za mobilni" +
-                "3 za medjunarodni" +
+                "3 za medjunarodni " +
                 "0 za kraj.");
 
         boolean ponovo;
@@ -91,7 +112,6 @@ public class Program {
             case 0:
                 // odustajanje od unosa
                 System.out.println("Zavrsili ste s unosom.");
-
                 return null;
 
             case 1:
@@ -101,8 +121,7 @@ public class Program {
                 System.out.println("Unesite broj: ");
                 String broj1 = Program.unosStringa();
 
-
-
+                return new FiksniBroj(Grad.pomocnaFunkcija(pozivniBroj), broj1);
                 // break;
 
             case 2:
@@ -136,6 +155,7 @@ public class Program {
         }
         while(ponovo == true);
 
+        return null;
     }
 
 }

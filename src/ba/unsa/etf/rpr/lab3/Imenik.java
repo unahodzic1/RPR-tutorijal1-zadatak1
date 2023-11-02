@@ -25,7 +25,9 @@ public class Imenik {
                 return x.getKey();
             }
         }
+
         return null;
+
     }
 
     public String naSlovo(char slovo){
@@ -37,7 +39,9 @@ public class Imenik {
             }
         }
 
+        if(vrati.toString() == null) return null;
         return vrati.toString();
+
     }
 
     public Set<String> izGrada(Grad grad){
@@ -52,6 +56,7 @@ public class Imenik {
         }
 
         return ljudiIzGrada;
+
     }
 
     public Set<TelefonskiBroj> izGradaBrojevi(Grad grad){
@@ -68,6 +73,7 @@ public class Imenik {
         }
 
         return izGradaBr;
+
     }
 
 }

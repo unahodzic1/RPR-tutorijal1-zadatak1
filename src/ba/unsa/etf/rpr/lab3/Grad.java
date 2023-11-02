@@ -7,7 +7,7 @@ public enum Grad {
     MAGLAJ("032"),
     SARAJEVO("033"),
     LIVNO("034"),
-    TUZLA("035"),
+    BANOVICI("035"),
     MOSTAR("036"),
     BIHAC("037"),
     GORAZDE("038");
@@ -20,6 +20,17 @@ public enum Grad {
 
     public String getPozivni() {
         return pozivni;
+    }
+
+    public static Grad pomocnaFunkcija(String phoneNumber){
+        for(Grad g: Grad.values()){
+            if (g.getPozivni().equals(phoneNumber)){
+                return g;
+            }
+        }
+
+        return null;
+
     }
 
 }
