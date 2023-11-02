@@ -3,21 +3,20 @@ package ba.unsa.etf.rpr.lab2.zadatak2;
 public class Racun {
 
     private Double prekoracenje; // potrebno zbog metode odobriPrekoracenje
-    protected Long brojRacuna;
-    protected Osoba korisnikRacuna;
-    protected boolean odobrenjePrekoracenja;
-    protected Double stanjeRacuna;
+    private Long brojRacuna;
+    private Osoba korisnikRacuna;
+    private boolean odobrenjePrekoracenja;
+    private Double stanjeRacuna;
 
     public Racun(Long brojRacuna, Osoba korisnikRacuna) {
         this.brojRacuna = brojRacuna;
         this.korisnikRacuna = korisnikRacuna;
     }
 
-    /*
     public boolean provjeriOdobrenjePrekoracenja(Double prekoracenje){
-
+       if(this.stanjeRacuna > prekoracenje) return true;
+       return false;
     }
-    */
 
     public boolean izvrsiUplatu(Double iznos){
         if(this.stanjeRacuna < iznos) return false;
@@ -35,5 +34,4 @@ public class Racun {
     public void odobriPrekoracenje(Double prekoracenje){
         this.prekoracenje = prekoracenje;
     }
-
 }

@@ -3,7 +3,6 @@ package ba.unsa.etf.rpr.lab2.zadatak2;
 import java.util.Objects;
 
 public class Osoba {
-
     private String ime;
     private String prezime;
 

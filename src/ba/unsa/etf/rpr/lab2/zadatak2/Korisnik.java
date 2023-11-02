@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Korisnik extends Osoba{
 
-    protected Racun racun;
+    private Racun racun;
 
     public Korisnik(String ime, String prezime) {
         super(ime, prezime);
@@ -22,4 +22,17 @@ public class Korisnik extends Osoba{
         this.racun = racun;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Korisnik)) return false;
+        if (!super.equals(o)) return false;
+        Korisnik korisnik = (Korisnik) o;
+        return Objects.equals(getRacun(), korisnik.getRacun());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), getRacun());
+    }
 }
