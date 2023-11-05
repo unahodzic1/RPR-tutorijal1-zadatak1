@@ -9,8 +9,8 @@ public enum Grad {
     LIVNO("034"),
     BANOVICI("035"),
     MOSTAR("036"),
-    BIHAC("037"),
-    GORAZDE("038");
+    GORAZDE("038"),
+    KLJUC("037");
 
     private String pozivni;
 

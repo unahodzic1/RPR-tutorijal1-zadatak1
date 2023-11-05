@@ -1,5 +1,6 @@
 package ba.unsa.etf.rpr.lab3;
 import java.util.Scanner;
+import java.util.Set;
 
 // iskoristen vlastiti tip izuzetka
 
@@ -8,6 +9,13 @@ public class Program {
     public static void main(String[] args) throws Exception {
 
         Imenik imenik = new Imenik();
+
+        imenik.dodaj("Una",new MobilniBroj(62,"111222"));
+        imenik.dodaj("Hana",new MobilniBroj(62,"333444"));
+        imenik.dodaj("Nadza",new FiksniBroj(Grad.SARAJEVO,"654567"));
+        imenik.dodaj("Nerma",new FiksniBroj(Grad.BANOVICI,"324465"));
+        imenik.dodaj("Nadina",new MedunarodniBroj("+387","353555"));
+        imenik.dodaj("Amina",new FiksniBroj(Grad.KLJUC,"345644"));
 
         System.out.println("Unesite zeljeni broj: " +
                 "1 za dodaj, " +
@@ -32,9 +40,21 @@ public class Program {
                         // dodavanje osoba u imenik
 
                         System.out.println("Unesite zeljeno ime: ");
-                        String ime1 = Program.unosStringa();
-                        TelefonskiBroj broj1 = Program.unosBroja();
-                        imenik.dodaj(ime1, broj1);
+                        Scanner unos1 = new Scanner(System.in);
+                        try {
+                            String ime1 = unos1.nextLine();
+                            if(ime1.contains("1") || ime1.contains("2") || ime1.contains("3") || ime1.contains("4") || ime1.contains("5")
+                                    || ime1.contains("6") || ime1.contains("7") || ime1.contains("8") || ime1.contains("9")){
+                                throw new VlastitiTipIzuzetka();
+                            }
+                            else{
+                                TelefonskiBroj broj1 = Program.unosBroja();
+                                imenik.dodaj(ime1, broj1);
+                            }
+                        }
+                        catch(VlastitiTipIzuzetka e){
+                            System.out.println(e.getMessage());
+                        }
 
                         break;
 
@@ -45,6 +65,7 @@ public class Program {
                         String ime2 = Program.unosStringa();
                         if(imenik.dajBroj(ime2) != null) System.out.println("Broj: " + imenik.dajBroj(ime2));
                         else System.out.println("U imeniku ne postoji osoba sa tim imenom!");
+
                         break;
 
                     case 3:
@@ -54,6 +75,7 @@ public class Program {
                         TelefonskiBroj broj3 = Program.unosBroja();
                         if(imenik.dajIme(broj3) != null) System.out.println("Ime: " + imenik.dajIme(broj3));
                         else System.out.println("U imeniku ne postoji osoba sa tim brojem!");
+
                         break;
 
                     case 4:
@@ -64,11 +86,24 @@ public class Program {
                         char slovo = unos4.charAt(0);
                         if(imenik.naSlovo(slovo) != null) imenik.naSlovo(slovo);
                         else System.out.println("U imeniku ne postoji osoba cije ime pocinje na to slovo!");
+
                         break;
 
                     case 5:
                         // izGrada
-                        String grad = Program.unosStringa();
+
+                        System.out.println("Unesite naziv grada: ");
+                        Scanner unos5 = new Scanner(System.in);
+                        String grad5 = unos5.nextLine();
+                        try{
+                            Grad gr = Grad.valueOf(grad5);
+                            Set<TelefonskiBroj> provjera = imenik.izGradaBrojevi(gr);
+                            System.out.println(provjera);
+                        }
+                        catch(Exception e){
+                            System.out.println("Ne postoji taj grad u imeniku!");
+                            return;
+                        }
 
                         break;
 
@@ -87,7 +122,7 @@ public class Program {
 
     // pomocna funkcija za unos stringa
 
-    public static String unosStringa() throws java.lang.Exception{
+    public static String unosStringa() throws Exception{
 
         Scanner unos = new Scanner(System.in);
         try {
