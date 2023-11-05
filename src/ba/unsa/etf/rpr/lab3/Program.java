@@ -23,7 +23,7 @@ public class Program {
                 "3 za dajIme, " +
                 "4 za naSlovo, " +
                 "5 za izGrada, " +
-                "6 za izGradaBrojevi" +
+                "6 za izGradaBrojevi i " +
                 "0 za kraj.");
 
         boolean ponovo;
@@ -84,7 +84,7 @@ public class Program {
                         System.out.println("Unesite slovo: ");
                         String unos4 = Program.unosStringa();
                         char slovo = unos4.charAt(0);
-                        if(imenik.naSlovo(slovo) != null) imenik.naSlovo(slovo);
+                        if(imenik.naSlovo(slovo) != null) System.out.println(imenik.naSlovo(slovo));
                         else System.out.println("U imeniku ne postoji osoba cije ime pocinje na to slovo!");
 
                         break;
@@ -97,8 +97,8 @@ public class Program {
                         String grad5 = unos5.nextLine();
                         try{
                             Grad gr = Grad.valueOf(grad5);
-                            Set<TelefonskiBroj> provjera = imenik.izGradaBrojevi(gr);
-                            System.out.println(provjera);
+                            Set<String> provjera = imenik.izGrada(gr);
+                            for(String x : provjera) System.out.println(x);
                         }
                         catch(Exception e){
                             System.out.println("Ne postoji taj grad u imeniku!");
@@ -108,6 +108,19 @@ public class Program {
                         break;
 
                     case 6:
+                        // izGradaBrojevi
+
+                        System.out.println("Unesite naziv grada: ");
+                        Scanner unos6 = new Scanner(System.in);
+                        String grad6 = unos6.nextLine();
+                        try{
+                            Grad gr = Grad.valueOf(grad6);
+                            //Set<TelefonskiBroj> provjera = imenik.izGradaBrojevi();
+                        }
+                        catch(Exception e){
+                            System.out.println("Ne postoji taj grad u imeniku!");
+                            return;
+                        }
                         break;
                     default:
                         System.out.println("Unijeli ste nedozvoljeni broj! Unesite ponovo: ");
@@ -122,29 +135,21 @@ public class Program {
 
     // pomocna funkcija za unos stringa
 
-    public static String unosStringa() throws Exception{
+    public static String unosStringa(){
 
         Scanner unos = new Scanner(System.in);
-        try {
-            String uneseniString = unos.nextLine();
-            if(uneseniString.contains("1")){
-                throw new VlastitiTipIzuzetka();
-            }
-            else return uneseniString;
-        }
-        catch(VlastitiTipIzuzetka e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+        String uneseniString = unos.nextLine();
+
+        return uneseniString;
     }
 
     // pomocna funkcija za unos broja telefona
 
     public static TelefonskiBroj unosBroja() throws Exception {
         System.out.println("Unesite broj za zeljeni tip: " +
-                "1 za fiksni," +
-                "2 za mobilni" +
-                "3 za medjunarodni " +
+                "1 za fiksni, " +
+                "2 za mobilni, " +
+                "3 za medjunarodni, " +
                 "0 za kraj.");
 
         boolean ponovo;
@@ -202,6 +207,7 @@ public class Program {
         while(ponovo == true);
 
         return null;
+
     }
 
 }
