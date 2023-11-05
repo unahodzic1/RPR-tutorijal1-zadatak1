@@ -13,8 +13,9 @@ public class Program {
         imenik.dodaj("Una",new MobilniBroj(62,"111222"));
         imenik.dodaj("Hana",new MobilniBroj(62,"333444"));
         imenik.dodaj("Nadza",new FiksniBroj(Grad.SARAJEVO,"654567"));
-        imenik.dodaj("Nerma",new FiksniBroj(Grad.BANOVICI,"324465"));
         imenik.dodaj("Nadina",new MedunarodniBroj("+387","353555"));
+        imenik.dodaj("Nerma",new FiksniBroj(Grad.BANOVICI,"324465"));
+        imenik.dodaj("Amila",new FiksniBroj(Grad.BANOVICI,"777989"));
         imenik.dodaj("Amina",new FiksniBroj(Grad.KLJUC,"345644"));
 
         System.out.println("Unesite zeljeni broj: " +
@@ -48,13 +49,13 @@ public class Program {
                                 throw new VlastitiTipIzuzetka();
                             }
                             else{
-                                TelefonskiBroj broj1 = Program.unosBroja();
+                                TelefonskiBroj broj1 = unosBroja();
                                 imenik.dodaj(ime1, broj1);
                             }
                         }
                         catch(VlastitiTipIzuzetka e){
                             System.out.println(e.getMessage());
-                        }
+                         }
 
                         break;
 
@@ -115,13 +116,18 @@ public class Program {
                         String grad6 = unos6.nextLine();
                         try{
                             Grad gr = Grad.valueOf(grad6);
-                            //Set<TelefonskiBroj> provjera = imenik.izGradaBrojevi();
+                            Set<TelefonskiBroj> provjera = imenik.izGradaBrojevi(gr);
+                            for(TelefonskiBroj x : provjera){
+                                System.out.println(x.ispisi());
+                            }
                         }
                         catch(Exception e){
                             System.out.println("Ne postoji taj grad u imeniku!");
                             return;
                         }
+
                         break;
+
                     default:
                         System.out.println("Unijeli ste nedozvoljeni broj! Unesite ponovo: ");
                         ponovo = true;
@@ -145,7 +151,7 @@ public class Program {
 
     // pomocna funkcija za unos broja telefona
 
-    public static TelefonskiBroj unosBroja() throws Exception {
+    public static TelefonskiBroj unosBroja(){
         System.out.println("Unesite broj za zeljeni tip: " +
                 "1 za fiksni, " +
                 "2 za mobilni, " +
