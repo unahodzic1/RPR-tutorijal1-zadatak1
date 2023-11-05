@@ -1,9 +1,11 @@
 package ba.unsa.etf.rpr.lab3;
 import java.util.Scanner;
 
+// iskoristen vlastiti tip izuzetka
+
 public class Program {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Imenik imenik = new Imenik();
 
@@ -85,16 +87,25 @@ public class Program {
 
     // pomocna funkcija za unos stringa
 
-    public static String unosStringa(){
-        Scanner unos = new Scanner(System.in);
-        String uneseniString = unos.nextLine();
+    public static String unosStringa() throws java.lang.Exception{
 
-        return uneseniString;
+        Scanner unos = new Scanner(System.in);
+        try {
+            String uneseniString = unos.nextLine();
+            if(uneseniString.contains("1")){
+                throw new VlastitiTipIzuzetka();
+            }
+            else return uneseniString;
+        }
+        catch(VlastitiTipIzuzetka e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     // pomocna funkcija za unos broja telefona
 
-    public static TelefonskiBroj unosBroja(){
+    public static TelefonskiBroj unosBroja() throws Exception {
         System.out.println("Unesite broj za zeljeni tip: " +
                 "1 za fiksni," +
                 "2 za mobilni" +
