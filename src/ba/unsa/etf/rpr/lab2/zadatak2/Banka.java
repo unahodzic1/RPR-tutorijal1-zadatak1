@@ -1,5 +1,7 @@
 package ba.unsa.etf.rpr.lab2.zadatak2;
 import java.util.List;
+import java.util.UUID;
+import java.util.Random;
 import java.util.ArrayList;
 
 public class Banka {
@@ -27,10 +29,23 @@ public class Banka {
         return noviUposlenik;
     }
 
-    /*
+//    public static String randomBrojRacuna() {
+//        return UUID.randomUUID().toString().replace("-", "");
+//    }
+
     public Racun kreirajRacunZaKorisnika(Korisnik korisnik){
+        Racun racun = null;
+
+        for(int i = 0; i < this.korisnici.size(); i++){
+            if(this.korisnici.get(i).equals(korisnik)){
+                Random brRacuna = new Random();
+                racun = new Racun(brRacuna.nextLong(), this.korisnici.get(i));
+                break;
+            }
+        }
+
+        return racun;
 
     }
 
-     */
 }
