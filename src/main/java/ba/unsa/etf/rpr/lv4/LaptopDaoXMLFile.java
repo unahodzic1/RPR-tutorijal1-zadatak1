@@ -8,6 +8,9 @@ public class LaptopDaoXMLFile implements LaptopDao {
     private File file;
     private ArrayList<Laptop> laptopi;
 
+    public LaptopDaoXMLFile() {
+    }
+
     public LaptopDaoXMLFile(File file) {
         this.file = file;
         this.laptopi = new ArrayList<>();
