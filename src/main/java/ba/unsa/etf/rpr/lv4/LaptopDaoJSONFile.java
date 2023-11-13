@@ -8,6 +8,9 @@ public class LaptopDaoJSONFile implements LaptopDao {
     private File file;
     private ArrayList<Laptop> laptopi;
 
+    public LaptopDaoJSONFile() {
+    }
+
     public LaptopDaoJSONFile(File file) {
         this.file = file;
         this.laptopi = new ArrayList<>();
