@@ -1,32 +1,23 @@
 package ba.unsa.etf.rpr.lv5;
 
-public class InformacijeONastavniku {
-    private String ime;
-    private String prezime;
+public class InformacijeONastavniku extends LicneInformacije implements Predstavi{
     private String titula;
 
-    public String getIme() {
-        return ime;
-    }
-
-    public String getPrezime() {
-        return prezime;
+    public InformacijeONastavniku(String ime, String prezime, String titula){
+        super(ime, prezime);
+        this.titula = titula;
     }
 
     public String getTitula() {
         return titula;
     }
 
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
-
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
-
     public void setTitula(String titula) {
         this.titula = titula;
+    }
+
+    public String predstavi(){
+        return super.predstavi() + " Titula: " + getTitula();
     }
 
 }
