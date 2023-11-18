@@ -9,7 +9,7 @@ public class Main {
         LicneInformacije covjek = new LicneInformacije("Nadina","Miralem");
         InformacijeOStudentu student = new InformacijeOStudentu("Una", "Hodzic", "2", "19044");
         InformacijeONastavniku nastavnik = new InformacijeONastavniku("Amina","Cajic", "kraljica");
-        Predmet predmet = new Predmet("Razvoj programskih rjesenja","Najbolji predmet ikada!",null);
+        Predmet predmet = new Predmet("Razvoj programskih rjesenja","Najbolji predmet ikada!");
         List<Predstavi> interfejs = new ArrayList<>();
         interfejs.add(predmet);
         interfejs.add(covjek);
@@ -27,5 +27,11 @@ public class Main {
 //        System.out.println(student.predstavi());
 //        System.out.println(nastavnik.predstavi());
 //        System.out.println(predmet.predstavi());
+        
+        Scanner unos = new Scanner(System.in);
+        System.out.println("Unesite ocjenu za predmet " + predmet.getNaziv() + ": ");
+        int ocjena = unos.nextInt();
+        predmet.ocijeni(ocjena);
+
     }
 }

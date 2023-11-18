@@ -8,7 +8,7 @@ public class Predmet implements Predstavi, MozeOcijeniti{
     private List<Ocjena> ocjene;
 
 
-    public Predmet(String naziv, String opis, List<Ocjena> ocjene){
+    public Predmet(String naziv, String opis){
         this.naziv = naziv;
         this.opis = opis;
         this.ocjene = ocjene;
