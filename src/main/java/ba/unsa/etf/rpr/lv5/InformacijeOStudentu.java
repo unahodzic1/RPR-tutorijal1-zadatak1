@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.lv5;
 
-public class InformacijeOStudentu extends LicneInformacije implements Predstavi {
+public class InformacijeOStudentu extends LicneInformacije implements IPredstavi, MozeOcijeniti{
     private String godinaStudija;
     private String brojIndexa;
 
@@ -10,25 +10,37 @@ public class InformacijeOStudentu extends LicneInformacije implements Predstavi 
         this.brojIndexa = brojIndexa;
     }
 
-    public String getGodinaStudija() {
-        return godinaStudija;
-    }
-
-    public String getBrojIndexa() {
-        return brojIndexa;
-    }
-
-
-    public void setGodinaStudija(String godinaStudija) {
+    public void setGodinaStudija(String godinaStudija){
         this.godinaStudija = godinaStudija;
     }
 
-    public void setBrojIndexa(String brojIndexa) {
+    public void setBrojIndexa(String brojIndexa){
         this.brojIndexa = brojIndexa;
     }
 
-    public String predstavi(){
-        return super.predstavi() + " Broj indeksa: " + getBrojIndexa() + " Godina studija: " + getGodinaStudija();
+    public String getGodinaStudija(){
+        return this.godinaStudija;
     }
+
+    public String getBrojIndexa(){
+        return this.brojIndexa;
+    }
+
+    // implementira interfejs IPredstavi
+
+    public String predstavi(){
+        return "Ime studenta: " + getIme() + " Prezime studenta: " + getPrezime() + " Broj indexa: " + getBrojIndexa();
+    }
+
+    // implementira interfejs MozeOcijeniti
+
+    public Ocjena ocijeni(int x){
+        LicneInformacije osobaKojaOcjenjuje = new InformacijeOStudentu(getIme(), getPrezime(), getGodinaStudija(), getBrojIndexa());
+        Ocjena ocjena = new Ocjena(osobaKojaOcjenjuje, x);
+
+        return ocjena;
+    }
+
+    // nkntm kako zna sta ocjenjuje
 
 }

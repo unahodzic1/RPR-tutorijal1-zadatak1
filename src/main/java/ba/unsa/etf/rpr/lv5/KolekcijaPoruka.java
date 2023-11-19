@@ -5,9 +5,10 @@ import java.util.List;
 public class KolekcijaPoruka {
     private List<String> poruke;
 
-    public KolekcijaPoruka(List<Predstavi> objekti) {
+    // BITNO!
+    public KolekcijaPoruka(List<IPredstavi> objekti) {
         this.poruke = new ArrayList<>();
-        for (Predstavi x : objekti) {
+        for (IPredstavi x : objekti) {
             this.poruke.add(x.predstavi());
         }
     }

@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.lv5;
 import java.util.List;
 
-public class InformacijeONastavniku extends LicneInformacije implements Predstavi, MozeOcijeniti{
+public class InformacijeONastavniku extends LicneInformacije implements IPredstavi, MozeOcijeniti{
     private String titula;
     private List<Ocjena> ocjene;
 
@@ -10,22 +10,27 @@ public class InformacijeONastavniku extends LicneInformacije implements Predstav
         this.titula = titula;
     }
 
-    public String getTitula() {
-        return titula;
-    }
-
-    public void setTitula(String titula) {
+    public void setTitula(String titula){
         this.titula = titula;
     }
 
-    public Ocjena ocijeni(int x) {
-        Ocjena novaOcjena = new Ocjena(null, x);
-        ocjene.add(novaOcjena);
-        return novaOcjena;
+    public String getTitula(){
+        return this.titula;
     }
 
+    // implementira interfejs IPredstavi
+
     public String predstavi(){
-        return super.predstavi() + " Titula: " + getTitula();
+        return "Ime nastavnika: " + getIme() + " Prezime nastavnika: " + getPrezime() + " Titula nastavnika: " + getTitula();
+    }
+
+    // implementira interfejs MozeOcijeniti
+
+    public Ocjena ocijeni(int x){
+        LicneInformacije osobaKojaOcjenjuje = new InformacijeONastavniku(getIme(), getPrezime(), getTitula());
+        Ocjena ocjena = new Ocjena(osobaKojaOcjenjuje, x);
+
+        return ocjena;
     }
 
 }

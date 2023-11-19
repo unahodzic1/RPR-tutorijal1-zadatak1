@@ -10,7 +10,8 @@ public class Ocjena {
     }
 
     public void setOcjena(int ocjena){
-        if(ocjena > 0 && ocjena < 10) this.ocjena = ocjena;
+        if(ocjena > 0 && ocjena < 11) this.ocjena = ocjena;
+        else throw new IllegalArgumentException();
     }
 
 }
