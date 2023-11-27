@@ -1,6 +1,6 @@
 package ba.unsa.etf.rpr.lv5;
 
-public class InformacijeOStudentu extends LicneInformacije implements IPredstavi, MozeOcijeniti{
+public class InformacijeOStudentu extends LicneInformacije implements IPredstavi{
     private String godinaStudija;
     private String brojIndexa;
 
@@ -30,15 +30,6 @@ public class InformacijeOStudentu extends LicneInformacije implements IPredstavi
 
     public String predstavi(){
         return "Ime studenta: " + getIme() + " Prezime studenta: " + getPrezime() + " Broj indexa: " + getBrojIndexa();
-    }
-
-    // implementira interfejs MozeOcijeniti
-
-    public Ocjena ocijeni(int x){
-        LicneInformacije osobaKojaOcjenjuje = new InformacijeOStudentu(getIme(), getPrezime(), getGodinaStudija(), getBrojIndexa());
-        Ocjena ocjena = new Ocjena(osobaKojaOcjenjuje, x);
-
-        return ocjena;
     }
 
 }
