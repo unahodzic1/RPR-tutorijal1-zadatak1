@@ -28,9 +28,11 @@ public class Predmet implements MozeOcijeniti{
         return this.opis;
     }
 
-    public Ocjena ocijeni(int ocjena) {
-        Ocjena novaOcjena = new Ocjena(null, ocjena);
+    public Ocjena ocijeni(LicneInformacije ocjenjuje, int ocjena) {
+        // svi mogu ocijeniti predmet
+        Ocjena novaOcjena = new Ocjena(ocjenjuje, ocjena);
         ocjene.add(novaOcjena);
+
         return novaOcjena;
     }
 

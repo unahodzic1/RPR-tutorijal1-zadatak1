@@ -26,9 +26,11 @@ public class InformacijeONastavniku extends LicneInformacije implements IPredsta
 
     // implementira interfejs MozeOcijeniti
 
-    public Ocjena ocijeni(int ocjena) {
-        Ocjena novaOcjena = new Ocjena(this, ocjena);
+    public Ocjena ocijeni(LicneInformacije ocjenjuje, int ocjena) {
+        if(!(ocjenjuje instanceof InformacijeOStudentu)) System.out.println("Student je jedini koji moze ocijeniti nastavnika!");
+        Ocjena novaOcjena = new Ocjena(ocjenjuje, ocjena);
         ocjene.add(novaOcjena);
+
         return novaOcjena;
     }
 
