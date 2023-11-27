@@ -26,11 +26,10 @@ public class InformacijeONastavniku extends LicneInformacije implements IPredsta
 
     // implementira interfejs MozeOcijeniti
 
-    public Ocjena ocijeni(int x){
-        LicneInformacije osobaKojaOcjenjuje = new InformacijeONastavniku(getIme(), getPrezime(), getTitula());
-        Ocjena ocjena = new Ocjena(osobaKojaOcjenjuje, x);
-
-        return ocjena;
+    public Ocjena ocijeni(int ocjena) {
+        Ocjena novaOcjena = new Ocjena(this, ocjena);
+        ocjene.add(novaOcjena);
+        return novaOcjena;
     }
 
 }

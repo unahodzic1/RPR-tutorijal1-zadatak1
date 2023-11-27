@@ -1,10 +1,16 @@
 package ba.unsa.etf.rpr.lv5;
 import java.util.List;
 
-public class Predmet {
+public class Predmet implements MozeOcijeniti{
     private String naziv;
     private String opis;
     private List<Ocjena> ocjene;
+
+    public Predmet(String naziv, String opis, List<Ocjena> ocjene) {
+        this.naziv = naziv;
+        this.opis = opis;
+        this.ocjene = ocjene;
+    }
 
     public void setNaziv(String naziv){
         this.naziv = naziv;
@@ -20,6 +26,12 @@ public class Predmet {
 
     public String getOpis(){
         return this.opis;
+    }
+
+    public Ocjena ocijeni(int ocjena) {
+        Ocjena novaOcjena = new Ocjena(null, ocjena);
+        ocjene.add(novaOcjena);
+        return novaOcjena;
     }
 
 }

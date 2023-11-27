@@ -41,6 +41,4 @@ public class InformacijeOStudentu extends LicneInformacije implements IPredstavi
         return ocjena;
     }
 
-    // nkntm kako zna sta ocjenjuje
-
 }
