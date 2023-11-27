@@ -17,5 +17,12 @@ public class Main {
         Pobjednik pobjednik = new Pobjednik(kolImena);
         System.out.println("Ime: " + pobjednik.getIme());
         System.out.println("Prezime: " + pobjednik.getPrezime());
+
+        List<String> kolekcijaImena = List.of("Una", "Amina", "Amila", "Sara", "Lana");
+        List<String> kolekcijaPrezimena = List.of("Hodzic", "Cajic", "Kukic", "Kardas", "Malinov");
+
+        KolekcijaImenaIPrezimena kolekcija = new KolekcijaImenaIPrezimena(kolekcijaImena, kolekcijaPrezimena);
+        System.out.println("Index najduzeg para: " + kolekcija.getIndexNajduzegPara());
+        System.out.println("Ime i prezime na pozicijii 0: " + kolekcija.getImeiPrezime(0));
     }
 }
