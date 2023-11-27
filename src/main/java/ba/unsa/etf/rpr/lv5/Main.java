@@ -22,14 +22,16 @@ public class Main {
 
         // unos informacija
 
-        System.out.println("Unesite ime: ");
-        System.out.println("Unesite prezime: ");
         Scanner unos = new Scanner(System.in);
-        Scanner unos1 = new Scanner(System.in);
+        System.out.println("Unesite ime: ");
         String ime = unos.nextLine();
+        System.out.println("Unesite prezime: ");
         String prezime = unos.nextLine();
         System.out.println("Unesite 1 ako ste nastavnik ili 2 ako ste student: ");
+        Scanner unos1 = new Scanner(System.in);Un
         int izbor = unos1.nextInt();
+
+        LicneInformacije osobaKojaOcjenjuje= new LicneInformacije(ime, prezime);
 
         switch(izbor){
             case 1:
@@ -43,12 +45,24 @@ public class Main {
                 System.out.println("Unesite broj indexa: ");
                 String brojIndexa = unos.nextLine();
                 InformacijeOStudentu student = new InformacijeOStudentu(ime, prezime, godinaStudija, brojIndexa);
-                break;
+
+                // samo student moze ocijeniti nastavnika
+                System.out.println("Unesite ime nastavnika: ");
+                String imeNastavnika = unos.nextLine();
+                System.out.println("Unesite prezime nastavnika: ");
+                String prezimeNastavnika = unos.nextLine();
+                System.out.println("Unesite titulu nastavnika: ");
+                String titulaNastavnika = unos.nextLine();
+                InformacijeONastavniku nastavnikKojegOcjenjujem = new InformacijeONastavniku(imeNastavnika, prezimeNastavnika, titulaNastavnika);
+                System.out.println("Unesite ocjenu za nastavnika: ");
+                Scanner unos2 = new Scanner(System.in);
+                int ocjenaNastavnikaBroj = unos2.nextInt();
+                List<Ocjena> ocjeneNastavnika = new ArrayList<>();
+                Ocjena ocjenaNastavnika = new Ocjena(osobaKojaOcjenjuje, ocjenaNastavnikaBroj);
+                nastavnikKojegOcjenjujem.ocijeni(ocjenaNastavnikaBroj);
         }
 
         // svi mogu ocijeniti predmet
-
-        LicneInformacije osobaKojaOcjenjuje= new LicneInformacije(ime, prezime);
 
         System.out.println("Unesite naziv predmeta koji zelite ocijeniti: ");
         String predmetNaziv = unos.nextLine();
@@ -59,7 +73,6 @@ public class Main {
         Predmet predmet = new Predmet(predmetNaziv, "Opis", ocjenePredmeta);
 
         predmet.ocijeni(ocjena);
-
-
+        
     }
 }
