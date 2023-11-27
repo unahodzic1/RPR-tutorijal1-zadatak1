@@ -1,7 +1,6 @@
 package ba.unsa.etf.rpr.lv5;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args){
@@ -16,7 +15,7 @@ public class Main {
         System.out.println("Najduze ime: " + kolImena.getNajduzeIme());
 
         Pobjednik pobjednik = new Pobjednik(kolImena);
-        System.out.println("Ime: " + pobjednik.getIme() + " Prezime: " + pobjednik.getPrezime());
-
+        System.out.println("Ime: " + pobjednik.getIme());
+        System.out.println("Prezime: " + pobjednik.getPrezime());
     }
 }

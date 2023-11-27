@@ -6,5 +6,5 @@ public class KolekcijaImenaIPrezimena {
     private List<String> prezimena;
 
     // metode
-
+    
 }

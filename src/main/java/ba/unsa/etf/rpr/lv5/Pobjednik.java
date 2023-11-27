@@ -10,7 +10,7 @@ public class Pobjednik {
 
     public Pobjednik(KolekcijaImena kolekcija){
         String razdvojeno = kolekcija.getNajduzeIme();
-        String[] imePrezime = razdvojeno.split("");
+        String[] imePrezime = razdvojeno.split(" ");
         this.ime = imePrezime[0];
         this.prezime = imePrezime[1];
         this.brojZnakova = imePrezime.length;
