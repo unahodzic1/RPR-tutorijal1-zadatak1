@@ -26,8 +26,8 @@ public class Main {
         System.out.println("Ime i prezime na pozicijii 0: " + kolekcija.getImeiPrezime(0));
 
         IKolekcijaImena kolekcija2 = new KolekcijaImenaIPrezimena(
-                List.of("Anida", "Naida", "Nadina", "Nerma", "Eman"),
-                List.of("Duharkic", "Pandur", "Miralem", "Kadric", "Boloban")
+                List.of("Nadza", "Anida", "Naida", "Nadina", "Nerma", "Eman"),
+                List.of("Poljo", "Duharkic", "Pandur", "Miralem", "Kadric", "Boloban")
         );
 
         Pobjednik pobjednik2 = new Pobjednik(kolekcija2);
