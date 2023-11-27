@@ -25,10 +25,23 @@ public class Main {
         System.out.println("Index najduzeg para: " + kolekcija.getIndexNajduzegPara());
         System.out.println("Ime i prezime na pozicijii 0: " + kolekcija.getImeiPrezime(0));
 
-        IKolekcijaImena kolekcija2 = new KolekcijaImenaIPrezimena(
-                List.of("Nadza", "Anida", "Naida", "Nadina", "Nerma", "Eman"),
-                List.of("Poljo", "Duharkic", "Pandur", "Miralem", "Kadric", "Boloban")
-        );
+        List<String> imena2 = new ArrayList<>();
+        imena2.add("Nadza");
+        imena2.add("Anida");
+        imena2.add("Naida");
+        imena2.add("Nadina");
+        imena2.add("Nerma");
+        imena2.add("Eman");
+
+        List<String> prezimena2 = new ArrayList<>();
+        prezimena2.add("Poljo");
+        prezimena2.add("Duharkic");
+        prezimena2.add("Pandur");
+        prezimena2.add("Miralem");
+        prezimena2.add("Kadric");
+        prezimena2.add("Boloban");
+
+        IKolekcijaImena kolekcija2 = new KolekcijaImenaIPrezimena(imena2, prezimena2);
 
         Pobjednik pobjednik2 = new Pobjednik(kolekcija2);
         System.out.println("Ime: " + pobjednik2.getIme());
