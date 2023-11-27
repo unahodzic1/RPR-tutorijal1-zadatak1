@@ -1,7 +1,7 @@
 package ba.unsa.etf.rpr.lv5;
 import java.util.List;
 
-public class KolekcijaImenaIPrezimena {
+public class KolekcijaImenaIPrezimena implements IKolekcijaImena {
     private List<String> imena;
     private List<String> prezimena;
 
@@ -25,6 +25,12 @@ public class KolekcijaImenaIPrezimena {
 
     public String getImeiPrezime(int index){
         return imena.get(index) + " " + prezimena.get(index);
+    }
+
+    @Override
+    public String getNajduzeIme(){
+        int indeks = getIndexNajduzegPara();
+        return imena.get(indeks) + " " + prezimena.get(indeks);
     }
 
 }

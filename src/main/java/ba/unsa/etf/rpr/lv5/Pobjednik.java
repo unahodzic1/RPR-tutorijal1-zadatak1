@@ -8,7 +8,7 @@ public class Pobjednik {
     
     private List<String> kolekcijaImena;
 
-    public Pobjednik(KolekcijaImena kolekcija){
+    public Pobjednik(IKolekcijaImena kolekcija){
         String razdvojeno = kolekcija.getNajduzeIme();
         String[] imePrezime = razdvojeno.split(" ");
         this.ime = imePrezime[0];

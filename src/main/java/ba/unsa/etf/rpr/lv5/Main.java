@@ -24,5 +24,15 @@ public class Main {
         KolekcijaImenaIPrezimena kolekcija = new KolekcijaImenaIPrezimena(kolekcijaImena, kolekcijaPrezimena);
         System.out.println("Index najduzeg para: " + kolekcija.getIndexNajduzegPara());
         System.out.println("Ime i prezime na pozicijii 0: " + kolekcija.getImeiPrezime(0));
+
+        IKolekcijaImena kolekcija2 = new KolekcijaImenaIPrezimena(
+                List.of("Anida", "Naida", "Nadina", "Nerma", "Eman"),
+                List.of("Duharkic", "Pandur", "Miralem", "Kadric", "Boloban")
+        );
+
+        Pobjednik pobjednik2 = new Pobjednik(kolekcija2);
+        System.out.println("Ime: " + pobjednik2.getIme());
+        System.out.println("Prezime: " + pobjednik2.getPrezime());
+
     }
 }
