@@ -6,9 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="lv5-z1-z2" />
-        <module name="Laboratorijska5Vjezba" />
+        <module name="lv6-z1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lv6-z1" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
