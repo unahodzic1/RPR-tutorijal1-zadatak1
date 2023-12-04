@@ -14,7 +14,7 @@
 
     <TextField fx:id="display" style="-fx-control-inner-background: #4CAF50;"/>
 
-    <GridPane hgap="10" vgap="10" alignment="CENTER" >
+    <GridPane hgap="10" vgap="10" alignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS"/>
             <ColumnConstraints hgrow="ALWAYS"/>

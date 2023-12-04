@@ -56,9 +56,6 @@ public class CalculatorController {
                 trenutniUnos = String.valueOf(prviOperand / drugiOperand);
                 else trenutniUnos = "Error!";
                 break;
-            case "%":
-                trenutniUnos = String.valueOf(prviOperand % drugiOperand);
-                break;
         }
 
         updateDisplay();
