@@ -55,6 +55,19 @@ public class CalculatorController {
                 if(drugiOperand != 0)
                 trenutniUnos = String.valueOf(prviOperand / drugiOperand);
                 else trenutniUnos = "Error!";
+                break;
+            case "%":
+                trenutniUnos = String.valueOf(prviOperand % drugiOperand);
+                break;
+        }
+
+        updateDisplay();
+    }
+
+    @FXML
+    protected void decimalButtonClicked(ActionEvent actionEvent){
+        if (!trenutniUnos.contains(".")) {
+            trenutniUnos += ".";
         }
 
         updateDisplay();
