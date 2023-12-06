@@ -33,8 +33,8 @@
         <Label text="Lozinka: " GridPane.rowIndex="4" GridPane.columnIndex="3" />
         <PasswordField fx:id="passwordKorisnika" GridPane.rowIndex="4" GridPane.columnIndex="4" GridPane.columnSpan="2"/>
 
-        <Button text="Dodaj" onAction="#dodajKorisnika" GridPane.rowIndex="5" GridPane.columnIndex="4" prefHeight="10" prefWidth="70"/>
-        <Button text="Kraj" onAction="#krajPrograma" GridPane.rowIndex="5" GridPane.columnIndex="5" prefHeight="10" prefWidth="70"/>
+        <Button text="Dodaj" onAction="#dodajKorisnika" GridPane.rowIndex="5" GridPane.columnIndex="4" prefHeight="10" prefWidth="80"/>
+        <Button text="Kraj" onAction="#krajPrograma" GridPane.rowIndex="5" GridPane.columnIndex="5" prefHeight="10" prefWidth="80"/>
     </children>
 
 </GridPane>

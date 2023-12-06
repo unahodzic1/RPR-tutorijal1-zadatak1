@@ -32,7 +32,8 @@ public class Controller {
     }
 
     public void initialize(){
-        listView.getItems().addAll("Una Hodzic", "Amina Cajic", "Amila Kukic", "Sara Kardas", "Lana Malinov");
+        listView.getItems().addAll("Una Hodzic", "Amina Cajic", "Amila Kukic", "Sara Kardas", "Lana Malinov", "Nadza Poljo", "Nadina Miralem",
+                "Nerma Kadric", "Eman Boloban", "Hana Hodzic", "Anida Duharkic", "Naida Pandur");
         listView.setOnMouseClicked(this::klikNaPolje);
     }
 
