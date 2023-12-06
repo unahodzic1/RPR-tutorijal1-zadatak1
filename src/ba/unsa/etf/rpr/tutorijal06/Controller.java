@@ -49,6 +49,7 @@ public class Controller {
                 trenutniUnos = String.valueOf(prviOperand + drugiOperand);
                 break;
             case "-":
+                if((prviOperand - drugiOperand) < 0) trenutniUnos = String.valueOf(-(drugiOperand - prviOperand));
                 trenutniUnos = String.valueOf(prviOperand - drugiOperand);
                 break;
             case "*":

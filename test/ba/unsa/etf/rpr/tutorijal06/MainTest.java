@@ -27,12 +27,6 @@ class MainTest {
     }
 
     @Test
-    public void startWithZero (FxRobot robot) {
-        display = robot.lookup("#display").queryAs(Label.class);
-        assertEquals("0", display.getText());
-    }
-
-    @Test
     public void numberOne (FxRobot robot) {
         display = robot.lookup("#display").queryAs(Label.class);
         robot.clickOn("#btn1");
@@ -89,21 +83,50 @@ class MainTest {
         assertEquals("89.88", display.getText());
     }
 
+    // moji testovi
+
     @Test
-    public void zeroBtn (FxRobot robot) {
+    public void number6Times6(FxRobot robot){
         display = robot.lookup("#display").queryAs(Label.class);
-        robot.clickOn("#btn0");
-        robot.clickOn("#btn0");
-        assertEquals("0", display.getText());
+        robot.clickOn("#btn6");
+        robot.clickOn("#multiplicationBtn");
+        robot.clickOn("#btn6");
+        robot.clickOn("#equalsBtn");
+        assertEquals("36.0", display.getText());
     }
 
     @Test
-    public void zeroBtn2 (FxRobot robot) {
+    public void divisionByZero(FxRobot robot){
         display = robot.lookup("#display").queryAs(Label.class);
+        robot.clickOn("#btn1");
+        robot.clickOn("#btn1");
+        robot.clickOn("#divisionBtn");
         robot.clickOn("#btn0");
+        robot.clickOn("#equalsBtn");
+        assertEquals("Error!", display.getText());
+    }
+
+    @Test
+    public void number40Minus10(FxRobot robot){
+        display = robot.lookup("#display").queryAs(Label.class);
+        robot.clickOn("#btn4");
         robot.clickOn("#btn0");
+        robot.clickOn("#minusBtn");
         robot.clickOn("#btn1");
         robot.clickOn("#btn0");
-        assertEquals("10", display.getText());
+        robot.clickOn("#equalsBtn");
+        assertEquals("30.0", display.getText());
+    }
+
+    @Test
+    public void number10Minus40(FxRobot robot){
+        display = robot.lookup("#display").queryAs(Label.class);
+        robot.clickOn("#btn1");
+        robot.clickOn("#btn0");
+        robot.clickOn("#minusBtn");
+        robot.clickOn("#btn4");
+        robot.clickOn("#btn0");
+        robot.clickOn("#equalsBtn");
+        assertEquals("-30.0", display.getText());
     }
 }

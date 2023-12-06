@@ -13,6 +13,7 @@
       <change beforePath="$PROJECT_DIR$/resources/fxml/digitron.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/digitron.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rpr20-tutorijal6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rpr20-tutorijal6.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/tutorijal06/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/tutorijal06/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ba/unsa/etf/rpr/tutorijal06/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ba/unsa/etf/rpr/tutorijal06/MainTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
       <recent name="$PROJECT_DIR$/resources/fxml" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.MainTest">
+  <component name="RunManager" selected="JUnit.MainTest.number10Minus40">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.Main" />
       <module name="rpr20-tutorijal6" />
@@ -78,7 +79,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.divisionByZero" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rpr20-tutorijal6" />
       <extension name="coverage">
         <pattern>
@@ -88,12 +89,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="divisionByZero(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainTest.number123" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MainTest.number10Minus40" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rpr20-tutorijal6" />
       <extension name="coverage">
         <pattern>
@@ -103,7 +105,39 @@
       </extension>
       <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
-      <option name="METHOD_NAME" value="number123(org.testfx.api.FxRobot)" />
+      <option name="METHOD_NAME" value="number10Minus40(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.number40Minus10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rpr20-tutorijal6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
+      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
+      <option name="METHOD_NAME" value="number40Minus10(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainTest.number6times6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="rpr20-tutorijal6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
+      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
+      <option name="METHOD_NAME" value="number6times6(org.testfx.api.FxRobot)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -111,9 +145,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MainTest" />
-        <item itemvalue="JUnit.MainTest.number123" />
+        <item itemvalue="JUnit.MainTest.number10Minus40" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.MainTest.number40Minus10" />
+        <item itemvalue="JUnit.MainTest.divisionByZero" />
+        <item itemvalue="JUnit.MainTest.number6times6" />
       </list>
     </recent_temporary>
   </component>
