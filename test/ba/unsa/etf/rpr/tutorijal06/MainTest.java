@@ -129,4 +129,5 @@ class MainTest {
         robot.clickOn("#equalsBtn");
         assertEquals("-30.0", display.getText());
     }
+    
 }

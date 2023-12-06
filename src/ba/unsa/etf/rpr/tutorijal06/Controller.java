@@ -50,7 +50,7 @@ public class Controller {
                 break;
             case "-":
                 if((prviOperand - drugiOperand) < 0) trenutniUnos = String.valueOf(-(drugiOperand - prviOperand));
-                trenutniUnos = String.valueOf(prviOperand - drugiOperand);
+                else trenutniUnos = String.valueOf(prviOperand - drugiOperand);
                 break;
             case "*":
                 trenutniUnos = String.valueOf(prviOperand * drugiOperand);
