@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd662424-5e64-492e-84a1-9be571d102f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_base.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_controls.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_javafx_fxml.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/fxml/digitron.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/resources/fxml/digitron.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rpr20-tutorijal6.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rpr20-tutorijal6.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/tutorijal06/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ba/unsa/etf/rpr/tutorijal06/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/ba/unsa/etf/rpr/tutorijal06/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ba/unsa/etf/rpr/tutorijal06/MainTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="40ab17a3-d878-415b-b4a9-1a68556073f0" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,161 +13,52 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectId" id="1krhg7URHPj3GqmdhmlcMyqNNWs" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="2ZBX8XF630ZobOU4x4CxFgUlU0J" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/unaho/rpr21-tutorijal6-unahodzic1/test&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/fxml" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.MainTest.number10Minus40">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.Main" />
-      <module name="rpr20-tutorijal6" />
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Korisnici" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.Korisnici" />
+      <module name="lv7-8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
+          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainTest.divisionByZero" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rpr20-tutorijal6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
-      <option name="METHOD_NAME" value="divisionByZero(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainTest.number10Minus40" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rpr20-tutorijal6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
-      <option name="METHOD_NAME" value="number10Minus40(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainTest.number40Minus10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rpr20-tutorijal6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
-      <option name="METHOD_NAME" value="number40Minus10(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MainTest.number6times6" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="rpr20-tutorijal6" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.tutorijal06.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.tutorijal06" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.tutorijal06.MainTest" />
-      <option name="METHOD_NAME" value="number6times6(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.MainTest.number10Minus40" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.MainTest.number40Minus10" />
-        <item itemvalue="JUnit.MainTest.divisionByZero" />
-        <item itemvalue="JUnit.MainTest.number6times6" />
+        <item itemvalue="Application.Korisnici" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bd662424-5e64-492e-84a1-9be571d102f6" name="Default Changelist" comment="" />
-      <created>1606464726124</created>
+      <changelist id="40ab17a3-d878-415b-b4a9-1a68556073f0" name="Changes" comment="" />
+      <created>1701896287908</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1606464726124</updated>
+      <updated>1701896287908</updated>
     </task>
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$" />
-    </ignored-roots>
   </component>
 </project>
