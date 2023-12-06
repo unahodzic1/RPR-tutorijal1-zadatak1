@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -28,6 +29,22 @@ public class Controller {
         String uneseniKorisnik = imeKorisnika.getText() + " " + prezimeKorisnika.getText();
         listView.getItems().add(uneseniKorisnik);
         clear();
+    }
+
+    public void initialize(){
+        listView.getItems().addAll("Una Hodzic", "Amina Cajic", "Amila Kukic", "Sara Kardas", "Lana Malinov");
+        listView.setOnMouseClicked(this::klikNaPolje);
+    }
+
+    private void klikNaPolje(MouseEvent mouseEvent){
+        String korisnik = listView.getSelectionModel().getSelectedItem();
+        popuniPodatke(korisnik);
+    }
+
+    private void popuniPodatke(String korisnik){
+        String[] imePrezime = korisnik.split(" ");
+        imeKorisnika.setText(imePrezime[0]);
+        prezimeKorisnika.setText(imePrezime[1]);
     }
 
     // ne razumijem bas tekst zadatka, jel se ovo trazi?
