@@ -57,7 +57,7 @@
       <recent name="ba.unsa.etf.rpr.lv78" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Korisnici">
+  <component name="RunManager" selected="JUnit.KorisniciTest">
     <configuration name="Korisnici" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.Korisnici" />
       <module name="lv7-8" />
@@ -136,8 +136,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Korisnici" />
         <item itemvalue="JUnit.KorisniciTest" />
+        <item itemvalue="Application.Korisnici" />
         <item itemvalue="JUnit.ControllerTest.dodajKorisnikaTest" />
         <item itemvalue="JUnit.KorisniciTest.toStringTest" />
         <item itemvalue="JUnit.KorisniciTest.dodajKorisnikaTest2" />

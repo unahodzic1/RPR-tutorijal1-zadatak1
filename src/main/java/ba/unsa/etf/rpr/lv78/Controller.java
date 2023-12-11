@@ -61,7 +61,9 @@ public class Controller {
     }
 
     public void dodajKorisnika(ActionEvent actionEvent){
+        KorisnikModel model = new KorisnikModel();
         Korisnik uneseniKorisnik = new Korisnik(imeKorisnika.getText(), prezimeKorisnika.getText(), emailKorisnika.getText(), korisnickoIme.getText(), passwordKorisnika.getText());
+        model.dodajKorisnika(uneseniKorisnik);
         listView.getItems().add(uneseniKorisnik);
         clear();
     }
