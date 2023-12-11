@@ -2,6 +2,7 @@ package ba.unsa.etf.rpr.lv78;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Korisnik implements Serializable{
     private  SimpleStringProperty ime;
@@ -41,6 +42,23 @@ public class Korisnik implements Serializable{
     @Override
     public String toString(){
         return ime.get() + " " + prezime.get();
+    }
+
+    // dodana equals metoda zbog testova
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Korisnik korisnik = (Korisnik) obj;
+
+        return Objects.equals(ime.get(), korisnik.ime.get()) && Objects.equals(prezime.get(), korisnik.prezime.get()) && Objects.equals(email.get(), korisnik.email.get()) && Objects.equals(korisnickoIme.get(), korisnik.korisnickoIme.get()) && Objects.equals(password.get(), korisnik.password.get());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ime.get(), prezime.get(), email.get(), korisnickoIme.get(), password.get());
     }
 
     // za svaki property imamo 3 metode

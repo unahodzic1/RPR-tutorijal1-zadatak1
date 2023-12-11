@@ -38,12 +38,16 @@ public class KorisnikModel {
         return trenutniKorisnik;
     }
 
-    void napuni(){
+    public void napuni(){
         korisnici.add(new Korisnik("Una", "Hodzic", "uhodzic1@etf.unsa.ba", "uhodzic1", "123"));
         korisnici.add(new Korisnik("Amina", "Cajic", "acajic1@etf.unsa.ba", "acajic1", "234"));
         korisnici.add(new Korisnik("Amila", "Kukic", "akukic1@etf.unsa.ba", "akukic1", "567"));
         korisnici.add(new Korisnik("Sara", "Kardas", "skardas1@etf.unsa.ba", "skardas1", "765"));
         korisnici.add(new Korisnik("Lana", "Malinov", "lmalinov1@etf.unsa.ba", "lmalinov1", "897"));
+    }
+
+    public void dodajKorisnika(Korisnik korisnik){
+        korisnici.add(new Korisnik(korisnik.getIme(), korisnik.getPrezime(), korisnik.getEmail(), korisnik.getKorisnickoIme(), korisnik.getPassword()));
     }
 
 }

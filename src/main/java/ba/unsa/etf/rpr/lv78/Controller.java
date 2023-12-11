@@ -66,8 +66,6 @@ public class Controller {
         clear();
     }
 
-    // ne razumijem bas tekst zadatka, jel se ovo trazi?
-
     public void krajPrograma(ActionEvent actionEvent){
         Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
         stage.close();
