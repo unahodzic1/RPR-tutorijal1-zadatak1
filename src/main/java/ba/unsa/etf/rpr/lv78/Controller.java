@@ -43,13 +43,13 @@ public class Controller {
     public void initialize(){
         listView.setItems(model.getKorisnici());
 
-        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null) {
-                imeKorisnika.setText(newValue.getIme());
-                prezimeKorisnika.setText(newValue.getPrezime());
-                emailKorisnika.setText(newValue.getEmail());
-                korisnickoIme.setText(newValue.getKorisnickoIme());
-                passwordKorisnika.setText(newValue.getPassword());
+        listView.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik) -> {
+            if (newKorisnik != null) {
+                imeKorisnika.setText(newKorisnik.getIme());
+                prezimeKorisnika.setText(newKorisnik.getPrezime());
+                emailKorisnika.setText(newKorisnik.getEmail());
+                korisnickoIme.setText(newKorisnik.getKorisnickoIme());
+                passwordKorisnika.setText(newKorisnik.getPassword());
             }
         });
 
