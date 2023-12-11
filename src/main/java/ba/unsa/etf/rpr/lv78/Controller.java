@@ -24,40 +24,29 @@ public class Controller {
     public TextField korisnickoIme;
     @FXML
     public PasswordField passwordKorisnika;
-
-    private SimpleStringProperty ime, prezime, email, korisnicko, pass;
-
     public Controller(KorisnikModel m){
         model = m;
     }
 
-    public Controller(){
-        ime = new SimpleStringProperty("");
-        prezime = new SimpleStringProperty("");
-        email = new SimpleStringProperty("");
-        korisnicko = new SimpleStringProperty("");
-        pass = new SimpleStringProperty("");
-    }
-
     @FXML
     public void initialize(){
-        listView.setItems(model.getKorisnici());
-
-        listView.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik) -> {
-            if (newKorisnik != null) {
-                imeKorisnika.setText(newKorisnik.getIme());
-                prezimeKorisnika.setText(newKorisnik.getPrezime());
-                emailKorisnika.setText(newKorisnik.getEmail());
-                korisnickoIme.setText(newKorisnik.getKorisnickoIme());
-                passwordKorisnika.setText(newKorisnik.getPassword());
-            }
-        });
-
         imeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().imeProperty());
         prezimeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().prezimeProperty());
         emailKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().emailProperty());
         korisnickoIme.textProperty().bindBidirectional(model.getTrenutniKorisnik().korisnickoImeProperty());
         passwordKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().passwordProperty());
+
+        listView.setItems(model.getKorisnici());
+
+        listView.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik)-> {
+               model.setTrenutniKorisnik(newKorisnik);
+               imeKorisnika.setText(newKorisnik.getIme());
+               prezimeKorisnika.setText(newKorisnik.getPrezime());
+               emailKorisnika.setText(newKorisnik.getEmail());
+               korisnickoIme.setText(newKorisnik.getKorisnickoIme());
+               passwordKorisnika.setText(newKorisnik.getPassword());
+               listView.refresh();
+        });
     }
 
     public void dodajKorisnika(ActionEvent actionEvent){
