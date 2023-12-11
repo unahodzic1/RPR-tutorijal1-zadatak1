@@ -3,19 +3,29 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import java.io.Serializable;
 
-public class Korisnik implements Serializable {
-    private final StringProperty ime;
-    private final StringProperty prezime;
-    private final StringProperty email;
-    private final StringProperty korisnickoIme;
-    private final StringProperty password;
+public class Korisnik implements Serializable{
+    private  SimpleStringProperty ime;
+    private  SimpleStringProperty prezime;
+    private  SimpleStringProperty email;
+    private  SimpleStringProperty korisnickoIme;
+    private  SimpleStringProperty password;
 
-    public Korisnik(StringProperty ime, StringProperty prezime, StringProperty email, StringProperty korisnickoIme, StringProperty password) {
+    // konstruktori
+
+    public Korisnik(SimpleStringProperty ime, SimpleStringProperty prezime, SimpleStringProperty email, SimpleStringProperty korisnickoIme, SimpleStringProperty password) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
         this.korisnickoIme = korisnickoIme;
         this.password = password;
+    }
+
+    public Korisnik(String ime, String prezime, String email, String korisnickoIme, String password) {
+        this.ime = new SimpleStringProperty(ime);
+        this.prezime = new SimpleStringProperty(prezime);
+        this.email = new SimpleStringProperty(email);
+        this.korisnickoIme = new SimpleStringProperty(korisnickoIme);
+        this.password = new SimpleStringProperty(password);
     }
 
     public Korisnik(){
@@ -26,45 +36,14 @@ public class Korisnik implements Serializable {
         this.password = new SimpleStringProperty("");
     }
 
-    public String getIme() {
-        return ime.get();
+    // toString metoda
+
+    @Override
+    public String toString(){
+        return ime.get() + " " + prezime.get();
     }
 
-    public StringProperty imeProperty() {
-        return ime;
-    }
-
-    public String getPrezime() {
-        return prezime.get();
-    }
-
-    public StringProperty prezimeProperty() {
-        return prezime;
-    }
-
-    public String getEmail() {
-        return email.get();
-    }
-
-    public StringProperty emailProperty() {
-        return email;
-    }
-
-    public String getKorisnickoIme() {
-        return korisnickoIme.get();
-    }
-
-    public StringProperty korisnickoImeProperty() {
-        return korisnickoIme;
-    }
-
-    public String getPassword() {
-        return password.get();
-    }
-
-    public StringProperty passwordProperty() {
-        return password;
-    }
+    // za svaki property imamo 3 metode
 
     public void setIme(String ime) {
         this.ime.set(ime);
@@ -85,4 +64,45 @@ public class Korisnik implements Serializable {
     public void setPassword(String password) {
         this.password.set(password);
     }
+
+    public String getIme() {
+        return ime.get();
+    }
+
+    public SimpleStringProperty imeProperty() {
+        return ime;
+    }
+
+    public String getPrezime() {
+        return prezime.get();
+    }
+
+    public SimpleStringProperty prezimeProperty() {
+        return prezime;
+    }
+
+    public String getEmail() {
+        return email.get();
+    }
+
+    public SimpleStringProperty emailProperty() {
+        return email;
+    }
+
+    public String getKorisnickoIme() {
+        return korisnickoIme.get();
+    }
+
+    public SimpleStringProperty korisnickoImeProperty() {
+        return korisnickoIme;
+    }
+
+    public String getPassword() {
+        return password.get();
+    }
+
+    public SimpleStringProperty passwordProperty() {
+        return password;
+    }
+
 }

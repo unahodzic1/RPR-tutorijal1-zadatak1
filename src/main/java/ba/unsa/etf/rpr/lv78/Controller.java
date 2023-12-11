@@ -1,51 +1,69 @@
 package ba.unsa.etf.rpr.lv78;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Controller {
 
+    private KorisnikModel model;
     @FXML
-    private ListView<String> listView;
+    private ListView<Korisnik> listView;
     @FXML
-    private TextField imeKorisnika;
+    public TextField imeKorisnika;
     @FXML
-    private TextField prezimeKorisnika;
+    public TextField prezimeKorisnika;
     @FXML
-    private TextField emailKorisnika;
+    public TextField emailKorisnika;
     @FXML
-    private TextField korisnickoIme;
+    public TextField korisnickoIme;
     @FXML
-    private PasswordField passwordKorisnika;
+    public PasswordField passwordKorisnika;
+
+    private SimpleStringProperty ime, prezime, email, korisnicko, pass;
+
+    public Controller(KorisnikModel m){
+        model = m;
+    }
+
+    public Controller(){
+        ime = new SimpleStringProperty("");
+        prezime = new SimpleStringProperty("");
+        email = new SimpleStringProperty("");
+        korisnicko = new SimpleStringProperty("");
+        pass = new SimpleStringProperty("");
+    }
+
+    @FXML
+    public void initialize(){
+        listView.setItems(model.getKorisnici());
+
+        listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                imeKorisnika.setText(newValue.getIme());
+                prezimeKorisnika.setText(newValue.getPrezime());
+                emailKorisnika.setText(newValue.getEmail());
+                korisnickoIme.setText(newValue.getKorisnickoIme());
+                passwordKorisnika.setText(newValue.getPassword());
+            }
+        });
+
+        imeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().imeProperty());
+        prezimeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().prezimeProperty());
+        emailKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().emailProperty());
+        korisnickoIme.textProperty().bindBidirectional(model.getTrenutniKorisnik().korisnickoImeProperty());
+        passwordKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().passwordProperty());
+    }
 
     public void dodajKorisnika(ActionEvent actionEvent){
-        String uneseniKorisnik = imeKorisnika.getText() + " " + prezimeKorisnika.getText();
+        Korisnik uneseniKorisnik = new Korisnik(imeKorisnika.getText(), prezimeKorisnika.getText(), emailKorisnika.getText(), korisnickoIme.getText(), passwordKorisnika.getText());
         listView.getItems().add(uneseniKorisnik);
         clear();
-    }
-
-    public void initialize(){
-        listView.getItems().addAll("Una Hodzic", "Amina Cajic", "Amila Kukic", "Sara Kardas", "Lana Malinov", "Nadza Poljo", "Nadina Miralem",
-                "Nerma Kadric", "Eman Boloban", "Hana Hodzic", "Anida Duharkic", "Naida Pandur");
-        listView.setOnMouseClicked(this::klikNaPolje);
-    }
-
-    private void klikNaPolje(MouseEvent mouseEvent){
-        String korisnik = listView.getSelectionModel().getSelectedItem();
-        popuniPodatke(korisnik);
-    }
-
-    private void popuniPodatke(String korisnik){
-        String[] imePrezime = korisnik.split(" ");
-        imeKorisnika.setText(imePrezime[0]);
-        prezimeKorisnika.setText(imePrezime[1]);
     }
 
     // ne razumijem bas tekst zadatka, jel se ovo trazi?
