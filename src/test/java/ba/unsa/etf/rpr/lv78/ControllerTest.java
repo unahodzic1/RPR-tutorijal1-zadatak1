@@ -26,10 +26,4 @@ class ControllerTest{
         stage.show();
         stage.toFront();
     }
-
-    @Test
-    public void dodajKorisnikaTest(FxRobot robot){
-
-    }
-
 }

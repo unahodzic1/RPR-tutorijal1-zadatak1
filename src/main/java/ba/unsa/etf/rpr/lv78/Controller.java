@@ -24,12 +24,35 @@ public class Controller {
     public TextField korisnickoIme;
     @FXML
     public PasswordField passwordKorisnika;
+
+    private boolean updatePodatke = false;
     public Controller(KorisnikModel m){
         model = m;
     }
 
+//    @FXML
+//    public void initialize(){
+//        imeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().imeProperty());
+//        prezimeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().prezimeProperty());
+//        emailKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().emailProperty());
+//        korisnickoIme.textProperty().bindBidirectional(model.getTrenutniKorisnik().korisnickoImeProperty());
+//        passwordKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().passwordProperty());
+//
+//        listView.setItems(model.getKorisnici());
+//
+//        listView.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik)-> {
+//               model.setTrenutniKorisnik(newKorisnik);
+//               imeKorisnika.setText(newKorisnik.getIme());
+//               prezimeKorisnika.setText(newKorisnik.getPrezime());
+//               emailKorisnika.setText(newKorisnik.getEmail());
+//               korisnickoIme.setText(newKorisnik.getKorisnickoIme());
+//               passwordKorisnika.setText(newKorisnik.getPassword());
+//               listView.refresh();
+//        });
+//    }
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         imeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().imeProperty());
         prezimeKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().prezimeProperty());
         emailKorisnika.textProperty().bindBidirectional(model.getTrenutniKorisnik().emailProperty());
@@ -39,22 +62,31 @@ public class Controller {
         listView.setItems(model.getKorisnici());
 
         listView.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik)-> {
-               model.setTrenutniKorisnik(newKorisnik);
-               imeKorisnika.setText(newKorisnik.getIme());
-               prezimeKorisnika.setText(newKorisnik.getPrezime());
-               emailKorisnika.setText(newKorisnik.getEmail());
-               korisnickoIme.setText(newKorisnik.getKorisnickoIme());
-               passwordKorisnika.setText(newKorisnik.getPassword());
-               listView.refresh();
+            if (newKorisnik != null) {
+                model.setTrenutniKorisnik(newKorisnik);
+                imeKorisnika.setText(newKorisnik.getIme());
+                prezimeKorisnika.setText(newKorisnik.getPrezime());
+                emailKorisnika.setText(newKorisnik.getEmail());
+                korisnickoIme.setText(newKorisnik.getKorisnickoIme());
+                passwordKorisnika.setText(newKorisnik.getPassword());
+                listView.refresh();
+            }
         });
+
+        imeKorisnika.textProperty().addListener((obs, oldText, newText) -> model.getTrenutniKorisnik().setIme(newText));
+        prezimeKorisnika.textProperty().addListener((obs, oldText, newText) -> model.getTrenutniKorisnik().setPrezime(newText));
+        emailKorisnika.textProperty().addListener((obs, oldText, newText) -> model.getTrenutniKorisnik().setEmail(newText));
+        korisnickoIme.textProperty().addListener((obs, oldText, newText) -> model.getTrenutniKorisnik().setKorisnickoIme(newText));
+        passwordKorisnika.textProperty().addListener((obs, oldText, newText) -> model.getTrenutniKorisnik().setPassword(newText));
     }
+
 
     public void dodajKorisnika(ActionEvent actionEvent){
         KorisnikModel model = new KorisnikModel();
-        Korisnik uneseniKorisnik = new Korisnik(imeKorisnika.getText(), prezimeKorisnika.getText(), emailKorisnika.getText(), korisnickoIme.getText(), passwordKorisnika.getText());
+        Korisnik uneseniKorisnik = new Korisnik();
         model.dodajKorisnika(uneseniKorisnik);
         listView.getItems().add(uneseniKorisnik);
-        clear();
+        // clear();
     }
 
     public void krajPrograma(ActionEvent actionEvent){
