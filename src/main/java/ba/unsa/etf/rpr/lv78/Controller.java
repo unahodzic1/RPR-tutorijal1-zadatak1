@@ -24,8 +24,6 @@ public class Controller {
     public TextField korisnickoIme;
     @FXML
     public PasswordField passwordKorisnika;
-
-    private boolean updatePodatke = false;
     public Controller(KorisnikModel m){
         model = m;
     }
@@ -80,13 +78,11 @@ public class Controller {
         passwordKorisnika.textProperty().addListener((obs, oldText, newText) -> model.getTrenutniKorisnik().setPassword(newText));
     }
 
-
     public void dodajKorisnika(ActionEvent actionEvent){
         KorisnikModel model = new KorisnikModel();
         Korisnik uneseniKorisnik = new Korisnik();
         model.dodajKorisnika(uneseniKorisnik);
         listView.getItems().add(uneseniKorisnik);
-        // clear();
     }
 
     public void krajPrograma(ActionEvent actionEvent){

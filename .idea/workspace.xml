@@ -57,7 +57,7 @@
       <recent name="ba.unsa.etf.rpr.lv78" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Korisnici">
+  <component name="RunManager" selected="JUnit.ControllerTest.testDodajKorisnika">
     <configuration name="Korisnici" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.Korisnici" />
       <module name="lv7-8" />
@@ -67,6 +67,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lv7-8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.lv78" />
+      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.ControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -87,6 +102,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ControllerTest.testDodajKorisnika" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lv7-8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.lv78" />
+      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.ControllerTest" />
+      <option name="METHOD_NAME" value="testDodajKorisnika(org.testfx.api.FxRobot)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="KorisniciTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lv7-8" />
       <extension name="coverage">
@@ -102,45 +133,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="KorisniciTest.dodajKorisnikaTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lv7-8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.lv78" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.KorisniciTest" />
-      <option name="METHOD_NAME" value="dodajKorisnikaTest2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="KorisniciTest.toStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lv7-8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.lv78" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.KorisniciTest" />
-      <option name="METHOD_NAME" value="toStringTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ControllerTest.testDodajKorisnika" />
+        <item itemvalue="JUnit.ControllerTest" />
         <item itemvalue="Application.Korisnici" />
         <item itemvalue="JUnit.KorisniciTest" />
         <item itemvalue="JUnit.ControllerTest.dodajKorisnikaTest" />
-        <item itemvalue="JUnit.KorisniciTest.toStringTest" />
-        <item itemvalue="JUnit.KorisniciTest.dodajKorisnikaTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -154,5 +153,16 @@
       <updated>1701896287908</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ba/unsa/etf/rpr/lv78/ControllerTest.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
