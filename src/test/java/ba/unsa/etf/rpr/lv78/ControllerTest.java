@@ -14,10 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.util.NodeQueryUtils.hasText;
 
-// NE RADE JAVAFX TESTOVI
-
 @ExtendWith(ApplicationExtension.class)
 class ControllerTest{
+    
     @Start
     public void start(Stage stage) throws Exception{
         KorisnikModel model = new KorisnikModel();
@@ -32,7 +31,7 @@ class ControllerTest{
     }
 
     @Test
-    public void testDodajKorisnika(FxRobot robot){
+    public void dodajKorisnikaTest1(FxRobot robot){
         robot.clickOn("#imeKorisnika").write("Una");
         robot.clickOn("#prezimeKorisnika").write("Hodzic");
         robot.clickOn("#emailKorisnika").write("uhodzic1@etf.unsa.ba");
@@ -42,12 +41,28 @@ class ControllerTest{
         robot.clickOn("#dodajBtn");
 
         assertEquals(6, robot.lookup("#listView").queryAs(ListView.class).getItems().size());
+    }
 
-        assertEquals("Una", robot.lookup("#imeKorisnika").queryAs(TextField.class).getText());
+    @Test
+    public void dodajKorisnikaTest2(FxRobot robot){
+        robot.clickOn("#imeKorisnika").write("Hana");
+        robot.clickOn("#prezimeKorisnika").write("Hodzic");
+        robot.clickOn("#emailKorisnika").write("hhodzic1@etf.unsa.ba");
+        robot.clickOn("#korisnickoIme").write("hhodzic1");
+        robot.clickOn("#passwordKorisnika").write("222");
+
+        robot.clickOn("#dodajBtn");
+        assertEquals("Hana", robot.lookup("#imeKorisnika").queryAs(TextField.class).getText());
         assertEquals("Hodzic", robot.lookup("#prezimeKorisnika").queryAs(TextField.class).getText());
-        assertEquals("uhodzic1@etf.unsa.ba", robot.lookup("#emailKorisnika").queryAs(TextField.class).getText());
-        assertEquals("uhodzic1", robot.lookup("#korisnickoIme").queryAs(TextField.class).getText());
-        assertEquals("123", robot.lookup("#passwordKorisnika").queryAs(PasswordField.class).getText());
+        assertEquals("hhodzic1@etf.unsa.ba", robot.lookup("#emailKorisnika").queryAs(TextField.class).getText());
+        assertEquals("hhodzic1", robot.lookup("#korisnickoIme").queryAs(TextField.class).getText());
+        assertEquals("222", robot.lookup("#passwordKorisnika").queryAs(PasswordField.class).getText());
+    }
+
+    @Test
+    public void test3(FxRobot robot) {
+        robot.clickOn("#krajBtn");
+        assertTrue(robot.lookup("#imeKorisnika").tryQuery().isEmpty());
     }
 
 }
