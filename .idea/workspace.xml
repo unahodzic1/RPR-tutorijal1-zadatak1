@@ -43,6 +43,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;last_directory_selection&quot;: &quot;C:/Users/unaho/IdeaProjects/lv7-8/src/test/java/ba/unsa/etf/rpr/lv78&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/unaho/IdeaProjects/lv7-8&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -57,7 +58,20 @@
       <recent name="ba.unsa.etf.rpr.lv78" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ControllerTest">
+  <component name="RunManager" selected="Application.Korisnici">
+    <configuration name="Korisnici" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.Korisnici" />
+      <module name="lv7-8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lv7-8" />
       <extension name="coverage">
@@ -89,7 +103,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ControllerTest.test2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.dodajKorisnikaTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="lv7-8" />
       <extension name="coverage">
         <pattern>
@@ -99,23 +113,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.lv78" />
       <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.ControllerTest" />
-      <option name="METHOD_NAME" value="test2(org.testfx.api.FxRobot)" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ControllerTest.testDodajKorisnika" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="lv7-8" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ba.unsa.etf.rpr.lv78.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ba.unsa.etf.rpr.lv78" />
-      <option name="MAIN_CLASS_NAME" value="ba.unsa.etf.rpr.lv78.ControllerTest" />
-      <option name="METHOD_NAME" value="testDodajKorisnika(org.testfx.api.FxRobot)" />
+      <option name="METHOD_NAME" value="dodajKorisnikaTest2(org.testfx.api.FxRobot)" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,11 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Korisnici" />
         <item itemvalue="JUnit.ControllerTest" />
+        <item itemvalue="JUnit.ControllerTest.dodajKorisnikaTest2" />
         <item itemvalue="JUnit.ControllerTest.dodajKorisnikaTest1" />
         <item itemvalue="JUnit.ControllerTest.zatvaranjeProzoraTest" />
-        <item itemvalue="JUnit.ControllerTest.test2" />
-        <item itemvalue="JUnit.ControllerTest.testDodajKorisnika" />
       </list>
     </recent_temporary>
   </component>

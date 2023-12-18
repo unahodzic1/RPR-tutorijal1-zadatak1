@@ -60,7 +60,7 @@ public class Controller {
         listView.setItems(model.getKorisnici());
 
         listView.getSelectionModel().selectedItemProperty().addListener((obs, oldKorisnik, newKorisnik)-> {
-            if (newKorisnik != null) {
+             if (newKorisnik != null) {
                 model.setTrenutniKorisnik(newKorisnik);
                 imeKorisnika.setText(newKorisnik.getIme());
                 prezimeKorisnika.setText(newKorisnik.getPrezime());
@@ -82,6 +82,8 @@ public class Controller {
         KorisnikModel model = new KorisnikModel();
         Korisnik uneseniKorisnik = new Korisnik();
         model.dodajKorisnika(uneseniKorisnik);
+        model.setTrenutniKorisnik(uneseniKorisnik);
+        listView.getSelectionModel().select(uneseniKorisnik);
         listView.getItems().add(uneseniKorisnik);
     }
 
