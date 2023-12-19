@@ -1,8 +1,9 @@
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class GeografijaDAO {
     private static GeografijaDAO singleton = null;
@@ -10,8 +11,15 @@ public class GeografijaDAO {
 
     private GeografijaDAO() {
         try {
-            String url = "jdbc:sqlite:baza2.db";
-            konekcija = DriverManager.getConnection(url);
+            File file = new File("baza1.db");
+            if (file.exists()) {
+                String url = "jdbc:sqlite:baza1.db";
+                konekcija = DriverManager.getConnection(url);
+            } else {
+                String url = "jdbc:sqlite:baza1.db";
+                konekcija = DriverManager.getConnection(url);
+                regenerisiBazu();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -25,16 +33,6 @@ public class GeografijaDAO {
     }
 
     public static void removeInstance() throws SQLException { singleton.konekcija.close(); singleton = null; }
-
-//    public void closeConnection() {
-//        try {
-//            if (konekcija != null && !konekcija.isClosed()) {
-//                konekcija.close();
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     // Zadatak 1
     public ArrayList<Grad> gradovi() {
@@ -60,8 +58,29 @@ public class GeografijaDAO {
         return gradovi;
     }
 
+    // Zadatak 2
+    // metoda iz predavanja
     private void regenerisiBazu() {
-
+        Scanner ulaz = null;
+        try{
+            ulaz = new Scanner(new FileInputStream("bazaRPR.db.sql")); // povezujemo se sa SQL dump datotekom
+            String sqlUpit = "";
+            while(ulaz.hasNext()){
+                sqlUpit += ulaz.nextLine();
+                if(sqlUpit.length() > 1 && sqlUpit.charAt(sqlUpit.length()-1) == ';'){
+                    try{
+                        Statement stmt = konekcija.createStatement();
+                        stmt.execute(sqlUpit);
+                        sqlUpit = "";
+                    }
+                    catch(SQLException e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        catch(FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
-
 }
