@@ -1,13 +1,39 @@
 public class Grad {
+
+    private int gradID;
     private String naziv;
     private int brojStanovnika;
 
-    public Grad(String naziv, int brojStanovnika) {
+    private int drzavaID;
+
+    public Grad(int gradID, String naziv, int brojStanovnika, int drzavaID) {
+        this.gradID = gradID;
         this.naziv = naziv;
         this.brojStanovnika = brojStanovnika;
+        this.drzavaID = drzavaID;
     }
 
     public Grad() {
+    }
+
+    public void setGradID(int gradID) {
+        this.gradID = gradID;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
+    public void setBrojStanovnika(int brojStanovnika) {
+        this.brojStanovnika = brojStanovnika;
+    }
+
+    public void setDrzavaID(int drzavaID) {
+        this.drzavaID = drzavaID;
+    }
+
+    public int getGradID() {
+        return gradID;
     }
 
     public String getNaziv() {
@@ -18,11 +44,13 @@ public class Grad {
         return brojStanovnika;
     }
 
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
+    public int getDrzavaID() {
+        return drzavaID;
     }
 
-    public void setBrojStanovnika(int brojStanovnika) {
-        this.brojStanovnika = brojStanovnika;
+    @Override
+    public String toString() {
+        return naziv;
     }
+
 }
