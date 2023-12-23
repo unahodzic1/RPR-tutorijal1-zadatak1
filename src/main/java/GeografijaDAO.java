@@ -26,41 +26,60 @@ public class GeografijaDAO {
 
     private GeografijaDAO() {
         try {
-            File file = new File("baza2.db");
-            if (file.exists()) {
-                String url = "jdbc:sqlite:baza2.db";
-                konekcija = DriverManager.getConnection(url);
-            } else {
-                String url = "jdbc:sqlite:baza2.db";
-                konekcija = DriverManager.getConnection(url);
-                regenerisiBazu();
-            }
-            String sql = "UPDATE grad SET naziv = ? WHERE id = ?";
-            String sql1 = "SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC";
-            String sql2 = "SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?";
-            String sql3 = "UPDATE grad SET broj_stanovnika = ? WHERE id = ?";
-            String sql4 = "UPDATE grad SET drzava = ? WHERE id = ?";
-            String sql5 = "DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = ? )";
-            String sql6 = "DELETE FROM drzava WHERE naziv = ? ";
-            String sql7 = "INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES (?, ?, ?)";
-            String sql8 = "INSERT INTO drzava (naziv, glavni_grad) VALUES (?, ?)";
-            String sql9 = "SELECT * FROM drzava WHERE naziv = ?";
-            String sql10 = "SELECT * FROM drzava";
-            String sql11 = "SELECT * FROM grad WHERE naziv = ?";
-            izmijeniGradNaziv = konekcija.prepareStatement(sql);
-            gradoviIspis = konekcija.prepareStatement(sql1);
-            glavniGrad = konekcija.prepareStatement(sql2);
-            izmijeniGradBrojStanovnika = konekcija.prepareStatement(sql3);
-            izmijeniGradDrzavaID = konekcija.prepareStatement(sql4);
-            obrisiDrzavu1 = konekcija.prepareStatement(sql5);
-            obrisiDrzavu2 = konekcija.prepareStatement(sql6);
-            dodajGrad = konekcija.prepareStatement(sql7);
-            dodajDrzavu = konekcija.prepareStatement(sql8);
-            nadjiDrzavu = konekcija.prepareStatement(sql9);
-            drzaveIspis = konekcija.prepareStatement(sql10);
-            nadjiGrad = konekcija.prepareStatement(sql11);
+            konekcija = DriverManager.getConnection("jdbc:sqlite:baza.db");
+            izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
+            gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
+            glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
+            izmijeniGradBrojStanovnika = konekcija.prepareStatement("UPDATE grad SET broj_stanovnika = ? WHERE id = ?");
+            izmijeniGradDrzavaID = konekcija.prepareStatement("UPDATE grad SET drzava = ? WHERE id = ?");
+            obrisiDrzavu1 = konekcija.prepareStatement("DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = ? )");
+            obrisiDrzavu2 = konekcija.prepareStatement("DELETE FROM drzava WHERE naziv = ? ");
+            dodajGrad = konekcija.prepareStatement("INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES (?, ?, ?)");
+            dodajDrzavu = konekcija.prepareStatement("INSERT INTO drzava (naziv, glavni_grad) VALUES (?, ?)");
+            nadjiDrzavu = konekcija.prepareStatement("SELECT * FROM drzava WHERE naziv = ?");
+            drzaveIspis = konekcija.prepareStatement("SELECT * FROM drzava");
+            nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
+            // File file = new File("baza2.db");
+//            if (file.exists()) {
+//                String url = "jdbc:sqlite:baza2.db";
+//                konekcija = DriverManager.getConnection(url);
+//            } else {
+//                String url = "jdbc:sqlite:baza2.db";
+//                konekcija = DriverManager.getConnection(url);
+//                regenerisiBazu();
+//            }
+
+//            izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
+//            gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
+//            glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
+//            izmijeniGradBrojStanovnika = konekcija.prepareStatement("UPDATE grad SET broj_stanovnika = ? WHERE id = ?");
+//            izmijeniGradDrzavaID = konekcija.prepareStatement("UPDATE grad SET drzava = ? WHERE id = ?");
+//            obrisiDrzavu1 = konekcija.prepareStatement("DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = ? )");
+//            obrisiDrzavu2 = konekcija.prepareStatement("DELETE FROM drzava WHERE naziv = ? ");
+//            dodajGrad = konekcija.prepareStatement("INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES (?, ?, ?)");
+//            dodajDrzavu = konekcija.prepareStatement("INSERT INTO drzava (naziv, glavni_grad) VALUES (?, ?)");
+//            nadjiDrzavu = konekcija.prepareStatement("SELECT * FROM drzava WHERE naziv = ?");
+//            drzaveIspis = konekcija.prepareStatement("SELECT * FROM drzava");
+//            nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
         } catch (SQLException e) {
-            e.printStackTrace();
+            regenerisiBazu();
+            try {
+                izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
+                gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
+                glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
+                izmijeniGradBrojStanovnika = konekcija.prepareStatement("UPDATE grad SET broj_stanovnika = ? WHERE id = ?");
+                izmijeniGradDrzavaID = konekcija.prepareStatement("UPDATE grad SET drzava = ? WHERE id = ?");
+                obrisiDrzavu1 = konekcija.prepareStatement("DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = ? )");
+                obrisiDrzavu2 = konekcija.prepareStatement("DELETE FROM drzava WHERE naziv = ? ");
+                dodajGrad = konekcija.prepareStatement("INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES (?, ?, ?)");
+                dodajDrzavu = konekcija.prepareStatement("INSERT INTO drzava (naziv, glavni_grad) VALUES (?, ?)");
+                nadjiDrzavu = konekcija.prepareStatement("SELECT * FROM drzava WHERE naziv = ?");
+                drzaveIspis = konekcija.prepareStatement("SELECT * FROM drzava");
+                nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
+            }
+            catch (SQLException e1){
+                e1.printStackTrace();
+            }
         }
     }
 

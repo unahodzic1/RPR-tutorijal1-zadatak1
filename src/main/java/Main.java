@@ -15,9 +15,10 @@ public class Main {
                 "1 - ispisiGradove, " +
                 "2 - glavniGrad, " +
                 "3 - izmijeniInfoGrad, " +
-                "4 - obrisiDrzavu ili " +
+                "4 - obrisiDrzavu, " +
+                "5 - nadjiDrzavu, " +
+                "6 - nadjiGrad ili " +
                 "0 - kraj ");
-
 
         while(true) {
 
@@ -41,6 +42,14 @@ public class Main {
                     break;
                 case 4:
                     obrisiDrzavu();
+                    System.out.println("Izaberite sljedecu opciju: ");
+                    break;
+                case 5:
+                    nadjiDrzavu();
+                    System.out.println("Izaberite sljedecu opciju: ");
+                    break;
+                case 6:
+                    nadjiGrad();
                     System.out.println("Izaberite sljedecu opciju: ");
                     break;
                 default:
@@ -136,6 +145,24 @@ public class Main {
         System.out.println("Unesite naziv drzave koju zelite obrisati: ");
         String naziv = unos.nextLine();
         geografijaDAO.obrisiDrzavu(naziv);
+    }
+
+    public static void nadjiDrzavu(){
+        Scanner unos = new Scanner(System.in);
+        System.out.println("Unesite naziv drzave koju zelite provjeriti: ");
+        String naziv = unos.nextLine();
+        Drzava drzava = geografijaDAO.nadjiDrzavu(naziv);
+        if(drzava == null) System.out.println("Drzava ne postoji u bazi!");
+        else System.out.println("Drzava postoji u bazi.");
+    }
+
+    public static void nadjiGrad(){
+        Scanner unos = new Scanner(System.in);
+        System.out.println("Unesite naziv grada koji zelite provjeriti: ");
+        String naziv = unos.nextLine();
+        Grad grad = geografijaDAO.nadjiGrad(naziv);
+        if(grad == null) System.out.println("Grad ne postoji u bazi!");
+        else System.out.println("Grad postoji u bazi.");
     }
 
 }
