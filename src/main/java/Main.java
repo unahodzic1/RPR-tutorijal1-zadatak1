@@ -10,28 +10,44 @@ public class Main {
 
         // Zadatak 4
 
+        Scanner unos = new Scanner(System.in);
         System.out.println("Izaberite opciju: " +
-                "1 - ispisiGradove(), " +
-                "2 - glavniGrad(), " +
-                "3 - izmijeniInfoGrad ili " +
+                "1 - ispisiGradove, " +
+                "2 - glavniGrad, " +
+                "3 - izmijeniInfoGrad, " +
+                "4 - obrisiDrzavu ili " +
                 "0 - kraj ");
 
-        Scanner unos = new Scanner(System.in);
-        int izbor = unos.nextInt();
 
-        switch(izbor){
-            case 0:
-                System.out.println("Kraj programa.");
-                break;
-            case 1:
-                System.out.println(ispisiGradove());
-                break;
-            case 2:
-                glavniGrad();
-                break;
-            case 3:
-                izmijeniInfoGrad();
-                break;
+        while(true) {
+
+            int izbor = unos.nextInt();
+
+            switch (izbor) {
+                case 0:
+                    System.out.println("Kraj programa.");
+                    break;
+                case 1:
+                    System.out.println(ispisiGradove());
+                    System.out.println("Izaberite sljedecu opciju: ");
+                    break;
+                case 2:
+                    glavniGrad();
+                    System.out.println("Izaberite sljedecu opciju: ");
+                    break;
+                case 3:
+                    izmijeniInfoGrad();
+                    System.out.println("Izaberite sljedecu opciju: ");
+                    break;
+                case 4:
+                    obrisiDrzavu();
+                    System.out.println("Izaberite sljedecu opciju: ");
+                    break;
+                default:
+                    System.out.println("Opcija pod tim brojem ne postoji!");
+            }
+
+            if(izbor == 0) break;
         }
 
         // zatvaranje konekcije
@@ -58,7 +74,7 @@ public class Main {
         for(int i = 0; i < gradovi.size(); i++){
             for(int j = 0; j < drzave.size(); j++){
                 if(gradovi.get(i).getDrzavaID() == drzave.get(j).getDrzavaID())
-                vratiString = vratiString + gradovi.get(i).getNaziv() + " (" + drzave.get(j).getNaziv() + ") " + gradovi.get(i).getBrojStanovnika() + " ";
+                vratiString = vratiString + gradovi.get(i).getNaziv() + " (" + drzave.get(j).getNaziv() + ") - " + gradovi.get(i).getBrojStanovnika() + " ";
             }
         }
 
@@ -70,7 +86,9 @@ public class Main {
         Scanner unos = new Scanner(System.in);
         String nazivDrzave = unos.nextLine();
         Grad glavniGr = geografijaDAO.glavniGrad(nazivDrzave);
-        System.out.println("Glavni grad drzave " + nazivDrzave + " je " + glavniGr + ".");
+        Drzava drzava = geografijaDAO.nadjiDrzavu(nazivDrzave);
+        if(drzava == null) System.out.println("Nepostojeca drzava.");
+        else System.out.println("Glavni grad drzave " + nazivDrzave + " je " + glavniGr + ".");
     }
 
     public static void izmijeniInfoGrad(){
@@ -99,18 +117,25 @@ public class Main {
                 geografijaDAO.izmijeniGradNaziv(gradIzmjena, noviNazivGrada);
                 break;
             case 2:
-                System.out.println("Unesite broj stanovnika: ");
+                System.out.println("Unesite novi broj stanovnika: ");
                 Scanner unos3 = new Scanner(System.in);
                 int brojSt = unos3.nextInt();
                 geografijaDAO.izmijeniGradBrojSt(gradIzmjena, brojSt);
                 break;
             case 3:
-                System.out.println("Unesite naziv drzave: ");
+                System.out.println("Unesite novi naziv drzave: ");
                 String novaDrzava = unos.nextLine();
                 geografijaDAO.izmijeniGradDrzava(gradIzmjena, novaDrzava);
                 break;
         }
 
+    }
+
+    public static void obrisiDrzavu(){
+        Scanner unos = new Scanner(System.in);
+        System.out.println("Unesite naziv drzave koju zelite obrisati: ");
+        String naziv = unos.nextLine();
+        geografijaDAO.obrisiDrzavu(naziv);
     }
 
 }

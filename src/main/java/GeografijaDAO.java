@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-// izmijeniti konstruktor tako da ima pripremljene upite - upitno?? ali mozda bolje da koristim preparedStatements?
-// dodati metodu izmijeniGrad
 public class GeografijaDAO {
     private static GeografijaDAO singleton = null;
     private Connection konekcija;
@@ -18,15 +16,22 @@ public class GeografijaDAO {
     private PreparedStatement izmijeniGradDrzavaID;
     private PreparedStatement gradoviIspis;
     private PreparedStatement glavniGrad;
+    private PreparedStatement obrisiDrzavu1;
+    private PreparedStatement obrisiDrzavu2;
+    private PreparedStatement dodajGrad;
+    private PreparedStatement dodajDrzavu;
+    private PreparedStatement nadjiDrzavu;
+    private PreparedStatement drzaveIspis;
+    private PreparedStatement nadjiGrad;
 
     private GeografijaDAO() {
         try {
-            File file = new File("bazau11.db");
+            File file = new File("baza2.db");
             if (file.exists()) {
-                String url = "jdbc:sqlite:bazau11.db";
+                String url = "jdbc:sqlite:baza2.db";
                 konekcija = DriverManager.getConnection(url);
             } else {
-                String url = "jdbc:sqlite:bazau11.db";
+                String url = "jdbc:sqlite:baza2.db";
                 konekcija = DriverManager.getConnection(url);
                 regenerisiBazu();
             }
@@ -35,11 +40,25 @@ public class GeografijaDAO {
             String sql2 = "SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?";
             String sql3 = "UPDATE grad SET broj_stanovnika = ? WHERE id = ?";
             String sql4 = "UPDATE grad SET drzava = ? WHERE id = ?";
+            String sql5 = "DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = ? )";
+            String sql6 = "DELETE FROM drzava WHERE naziv = ? ";
+            String sql7 = "INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES (?, ?, ?)";
+            String sql8 = "INSERT INTO drzava (naziv, glavni_grad) VALUES (?, ?)";
+            String sql9 = "SELECT * FROM drzava WHERE naziv = ?";
+            String sql10 = "SELECT * FROM drzava";
+            String sql11 = "SELECT * FROM grad WHERE naziv = ?";
             izmijeniGradNaziv = konekcija.prepareStatement(sql);
             gradoviIspis = konekcija.prepareStatement(sql1);
             glavniGrad = konekcija.prepareStatement(sql2);
             izmijeniGradBrojStanovnika = konekcija.prepareStatement(sql3);
             izmijeniGradDrzavaID = konekcija.prepareStatement(sql4);
+            obrisiDrzavu1 = konekcija.prepareStatement(sql5);
+            obrisiDrzavu2 = konekcija.prepareStatement(sql6);
+            dodajGrad = konekcija.prepareStatement(sql7);
+            dodajDrzavu = konekcija.prepareStatement(sql8);
+            nadjiDrzavu = konekcija.prepareStatement(sql9);
+            drzaveIspis = konekcija.prepareStatement(sql10);
+            nadjiGrad = konekcija.prepareStatement(sql11);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -128,14 +147,10 @@ public class GeografijaDAO {
 
     public void obrisiDrzavu(String drzava) {
         try {
-            String sql = "DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = '" + drzava + "')";
-            String sql2 = "DELETE FROM drzava WHERE naziv = '" + drzava + "'";
-            try (Statement statementGradovi = konekcija.createStatement()) {
-                statementGradovi.executeUpdate(sql);
-            }
-            try (Statement statementDrzava = konekcija.createStatement()) {
-                statementDrzava.executeUpdate(sql2);
-            }
+            obrisiDrzavu1.setString(1, drzava);
+            obrisiDrzavu1.executeUpdate();
+            obrisiDrzavu2.setString(1,drzava);
+            obrisiDrzavu2.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -146,10 +161,10 @@ public class GeografijaDAO {
         int brojStanovnika = grad.getBrojStanovnika();
         int drzavaID = grad.getDrzavaID();
         try{
-            String sql = "INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES ('" + naziv + "'," + brojStanovnika + "," + drzavaID + ")";
-            try(Statement statement = konekcija.createStatement()){
-                statement.executeUpdate(sql);
-            }
+            dodajGrad.setString(1, naziv);
+            dodajGrad.setInt(2, brojStanovnika);
+            dodajGrad.setInt(3, drzavaID);
+            dodajGrad.executeUpdate();
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -160,17 +175,14 @@ public class GeografijaDAO {
         String naziv = drzava.getNaziv();
         int gradID = drzava.getGradID();
         try{
-            String sql = "INSERT INTO drzava (naziv, glavni_grad) VALUES ('" + naziv + "'," + gradID + ")";
-            try(Statement statement = konekcija.createStatement()){
-                statement.executeUpdate(sql);
-            }
+            dodajDrzavu.setString(1, naziv);
+            dodajDrzavu.setInt(2, gradID);
+            dodajDrzavu.executeUpdate();
         }
         catch(SQLException e){
             e.printStackTrace();
         }
     }
-
-    // podaci koji se mijenjaju valjda trebaju da se prime kao parametri funkcije???
 
     public void izmijeniGradNaziv(Grad grad, String noviNaziv){
         int gradID = grad.getGradID();
@@ -208,7 +220,6 @@ public class GeografijaDAO {
         int brojStanovnika = grad.getBrojStanovnika();
         int drzavaID = grad.getDrzavaID();
         try{
-            // pomocni upit, da dobijemo id drzave pod tim imenom
             Drzava drzavaIzmjena = nadjiDrzavu(drzava);
             int noviID = drzavaIzmjena.getDrzavaID();
             izmijeniGradDrzavaID.setInt(1, noviID);
@@ -223,9 +234,8 @@ public class GeografijaDAO {
     public Drzava nadjiDrzavu(String drzava){
         Drzava vratiDrzavu = null;
         try{
-            String sql = "SELECT * FROM drzava WHERE naziv = '" + drzava + "'";
-            try(Statement statement = konekcija.createStatement();
-            ResultSet rs = statement.executeQuery(sql)){
+            nadjiDrzavu.setString(1, drzava);
+            try(ResultSet rs = nadjiDrzavu.executeQuery()){
                 while (rs.next()) {
                     int drzavaID = rs.getInt("id");
                     String naziv = rs.getString("naziv");
@@ -238,7 +248,6 @@ public class GeografijaDAO {
         catch(SQLException e){
             e.printStackTrace();
         }
-        if(vratiDrzavu == null) System.out.println("Drzava ne postoji u bazi!");
         return vratiDrzavu;
     }
 
@@ -248,10 +257,7 @@ public class GeografijaDAO {
         ArrayList<Drzava> drzave = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM drzava";
-            try (Statement statement = konekcija.createStatement();
-                 ResultSet rs = statement.executeQuery(sql)) {
-
+            try (ResultSet rs = drzaveIspis.executeQuery()) {
                 while (rs.next()) {
                     int drzavaID = rs.getInt("id");
                     String naziv = rs.getString("naziv");
@@ -271,9 +277,8 @@ public class GeografijaDAO {
     public Grad nadjiGrad(String grad){
         Grad vratiGrad = null;
         try{
-            String sql = "SELECT * FROM grad WHERE naziv = '" + grad + "'";
-            try(Statement statement = konekcija.createStatement();
-                ResultSet rs = statement.executeQuery(sql)){
+            nadjiGrad.setString(1, grad);
+            try(ResultSet rs = nadjiGrad.executeQuery()){
                 while (rs.next()) {
                     int gradID = rs.getInt("id");
                     String naziv = rs.getString("naziv");
