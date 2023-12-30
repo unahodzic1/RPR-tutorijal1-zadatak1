@@ -1,5 +1,12 @@
+package com.example.lv1011;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,8 +15,10 @@ import java.io.FileNotFoundException;
 public class GeografijaDAO {
     private static GeografijaDAO singleton = null;
     private Connection konekcija;
-
-    // pripremljeni upiti
+    private ObservableList<Grad> gradovi = FXCollections.observableArrayList();
+    private ObservableList<Drzava> drzave = FXCollections.observableArrayList();
+    private ObjectProperty<Grad> trenutniGrad = new SimpleObjectProperty<>();
+    private ObjectProperty<Drzava> trenutnaDrzava = new SimpleObjectProperty<>();
 
     private PreparedStatement izmijeniGradNaziv;
     private PreparedStatement izmijeniGradBrojStanovnika;
@@ -23,6 +32,8 @@ public class GeografijaDAO {
     private PreparedStatement nadjiDrzavu;
     private PreparedStatement drzaveIspis;
     private PreparedStatement nadjiGrad;
+
+    private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno;
 
     private GeografijaDAO() {
         try {
@@ -39,28 +50,9 @@ public class GeografijaDAO {
             nadjiDrzavu = konekcija.prepareStatement("SELECT * FROM drzava WHERE naziv = ?");
             drzaveIspis = konekcija.prepareStatement("SELECT * FROM drzava");
             nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
-            // File file = new File("baza2.db");
-//            if (file.exists()) {
-//                String url = "jdbc:sqlite:baza2.db";
-//                konekcija = DriverManager.getConnection(url);
-//            } else {
-//                String url = "jdbc:sqlite:baza2.db";
-//                konekcija = DriverManager.getConnection(url);
-//                regenerisiBazu();
-//            }
-
-//            izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
-//            gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
-//            glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
-//            izmijeniGradBrojStanovnika = konekcija.prepareStatement("UPDATE grad SET broj_stanovnika = ? WHERE id = ?");
-//            izmijeniGradDrzavaID = konekcija.prepareStatement("UPDATE grad SET drzava = ? WHERE id = ?");
-//            obrisiDrzavu1 = konekcija.prepareStatement("DELETE FROM grad WHERE drzava IN (SELECT id FROM drzava WHERE naziv = ? )");
-//            obrisiDrzavu2 = konekcija.prepareStatement("DELETE FROM drzava WHERE naziv = ? ");
-//            dodajGrad = konekcija.prepareStatement("INSERT INTO grad (naziv, broj_stanovnika, drzava) VALUES (?, ?, ?)");
-//            dodajDrzavu = konekcija.prepareStatement("INSERT INTO drzava (naziv, glavni_grad) VALUES (?, ?)");
-//            nadjiDrzavu = konekcija.prepareStatement("SELECT * FROM drzava WHERE naziv = ?");
-//            drzaveIspis = konekcija.prepareStatement("SELECT * FROM drzava");
-//            nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
+            sviGradovi = konekcija.prepareStatement("SELECT * FROM grad");
+            sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
+           // drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
         } catch (SQLException e) {
             regenerisiBazu();
             try {
@@ -76,6 +68,9 @@ public class GeografijaDAO {
                 nadjiDrzavu = konekcija.prepareStatement("SELECT * FROM drzava WHERE naziv = ?");
                 drzaveIspis = konekcija.prepareStatement("SELECT * FROM drzava");
                 nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
+                sviGradovi = konekcija.prepareStatement("SELECT * FROM grad");
+                sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
+              //  drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
             }
             catch (SQLException e1){
                 e1.printStackTrace();
@@ -92,10 +87,46 @@ public class GeografijaDAO {
 
     public static void removeInstance() throws SQLException { singleton.konekcija.close(); singleton = null; }
 
+    // LV10/11
+    // treba mi vratiti i naziv drzave
+    public ObservableList<Grad> sviGradovi(){
+        ObservableList<Grad> rezultat = FXCollections.observableArrayList();
+        try(ResultSet rs = sviGradovi.executeQuery()){
+            while(rs.next()){
+                int gradID = rs.getInt("id");
+                String naziv = rs.getString("naziv");
+                int brojStanovnika = rs.getInt("broj_stanovnika");
+                int drzavaID = rs.getInt("drzava");
+
+                Grad grad = new Grad(gradID, naziv, brojStanovnika, drzavaID);
+                rezultat.add(grad);
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return rezultat;
+    }
+
+    // Helper method to get country name based on drzavaID
+    private String getDrzavaNaziv(int drzavaID) {
+        // Modify this query based on your database schema
+        String query = "SELECT naziv FROM drzava WHERE id = ?";
+        try (PreparedStatement statement = konekcija.prepareStatement(query)) {
+            statement.setInt(1, drzavaID);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getString("naziv");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     // Zadatak 1
     public ArrayList<Grad> gradovi() {
         ArrayList<Grad> gradovi = new ArrayList<>();
-
         try {
             try (ResultSet rs = gradoviIspis.executeQuery()) {
                 while (rs.next()) {
@@ -313,5 +344,4 @@ public class GeografijaDAO {
         }
         return vratiGrad;
     }
-
 }

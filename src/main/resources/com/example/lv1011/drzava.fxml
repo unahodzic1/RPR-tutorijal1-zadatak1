@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.ButtonBar?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.lv1011.DrzavaController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Naziv:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="fieldNaziv" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Glavni grad:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <ChoiceBox fx:id="choiceGrad" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Button fx:id="btnOk" text="Ok" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <Button fx:id="btnCancel" text="Cancel" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#cancelButtonAction"/>
+    </GridPane>
+
+</VBox>
