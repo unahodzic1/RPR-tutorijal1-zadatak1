@@ -33,7 +33,7 @@
             <Button fx:id="btnDodajGrad" text="Dodaj grad" prefWidth="120" GridPane.rowIndex="0" onAction="#dodajGradButtonAction"/>
             <Button fx:id="btnDodajDrzavu" text="Dodaj drzavu" prefWidth="120" GridPane.rowIndex="1" onAction="#dodajDrzavuButtonAction"/>
             <Button fx:id="btnIzmijeniGrad" text="Izmijeni grad" prefWidth="120" GridPane.rowIndex="2" onAction="#dodajGradButtonAction"/>
-            <Button fx:id="btnObrisiGrad" text="Obrisi grad" prefWidth="120" GridPane.rowIndex="3" />
+            <Button fx:id="btnObrisiGrad" text="Obrisi grad" prefWidth="120" GridPane.rowIndex="3" onAction="#obrisiGradButtonAction"/>
         </GridPane>
     </right>
 

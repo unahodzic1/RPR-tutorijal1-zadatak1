@@ -82,4 +82,16 @@ public class GlavnaController {
         }
     }
 
+    @FXML
+    private void obrisiGradButtonAction() {
+        Grad odabraniGrad = tableViewGradovi.getSelectionModel().getSelectedItem();
+
+        if (odabraniGrad != null) {
+            String grad = odabraniGrad.getNaziv();
+            dao.obrisiGrad(grad);
+            tableViewGradovi.getItems().remove(odabraniGrad);
+        }
+        
+    }
+
 }

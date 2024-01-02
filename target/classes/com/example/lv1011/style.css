@@ -5,3 +5,8 @@
 .table-row-cell:odd {
     -fx-background-color: #FFFFFF;
 }
+
+.error-text-field {
+    -fx-border-color: red;
+    -fx-background-color: #ffd4d4; /* svijetlo crvena pozadina */
+}

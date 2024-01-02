@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class GeografijaDAO {
+    public static int brojacDrzava = 3;
+    public static int brojacGrad = 5;
     private static GeografijaDAO singleton = null;
     private Connection konekcija;
     private ObservableList<Grad> gradovi = FXCollections.observableArrayList();
@@ -33,7 +35,7 @@ public class GeografijaDAO {
     private PreparedStatement drzaveIspis;
     private PreparedStatement nadjiGrad;
 
-    private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno;
+    private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno, obrisiGrad;
 
     private GeografijaDAO() {
         try {
@@ -53,6 +55,7 @@ public class GeografijaDAO {
             sviGradovi = konekcija.prepareStatement("SELECT * FROM grad");
             sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
            // drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
+            obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
         } catch (SQLException e) {
             regenerisiBazu();
             try {
@@ -71,6 +74,7 @@ public class GeografijaDAO {
                 sviGradovi = konekcija.prepareStatement("SELECT * FROM grad");
                 sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
               //  drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
+                obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
             }
             catch (SQLException e1){
                 e1.printStackTrace();
@@ -207,6 +211,7 @@ public class GeografijaDAO {
     }
 
     public void dodajGrad(Grad grad){
+        //grad.setDrzavaID(++brojacGrad);
         String naziv = grad.getNaziv();
         int brojStanovnika = grad.getBrojStanovnika();
         int drzavaID = grad.getDrzavaID();
@@ -222,6 +227,7 @@ public class GeografijaDAO {
     }
 
     public void dodajDrzavu(Drzava drzava){
+        //drzava.setDrzavaID(++brojacDrzava);
         String naziv = drzava.getNaziv();
         int gradID = drzava.getGradID();
         try{
@@ -344,4 +350,15 @@ public class GeografijaDAO {
         }
         return vratiGrad;
     }
+
+    public void obrisiGrad(String naziv){
+        try{
+            obrisiGrad.setString(1, naziv);
+            obrisiGrad.executeUpdate();
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 }
