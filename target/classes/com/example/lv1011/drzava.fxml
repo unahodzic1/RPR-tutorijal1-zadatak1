@@ -23,7 +23,7 @@
         <TextField fx:id="fieldNaziv" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
         <Label text="Glavni grad:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
         <ChoiceBox fx:id="choiceGrad" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-        <Button fx:id="btnOk" text="Ok" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#validateInputDrzavaNaziv"/>
+        <Button fx:id="btnOk" text="Ok" GridPane.rowIndex="2" GridPane.columnIndex="0" onAction="#okButtonAction"/>
         <Button fx:id="btnCancel" text="Cancel" GridPane.rowIndex="2" GridPane.columnIndex="1" onAction="#cancelButtonAction"/>
     </GridPane>
 

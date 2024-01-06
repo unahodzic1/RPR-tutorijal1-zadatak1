@@ -10,6 +10,10 @@ import java.text.ChoiceFormat;
 
 public class DrzavaController {
 
+    private GeografijaDAO dao;
+
+    private static int noviID = 3;
+
     @FXML
     private TextField fieldNaziv;
 
@@ -20,26 +24,48 @@ public class DrzavaController {
     private ChoiceBox<Grad> choiceGrad;
 
     @FXML
+    private void initialize() {
+        dao = GeografijaDAO.getInstance();
+        choiceGrad.setItems(FXCollections.observableArrayList(dao.gradovi()));
+    }
+
+    @FXML
     public void cancelButtonAction(ActionEvent event){
         Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void initialize() {
-        choiceGrad.setItems(FXCollections.observableArrayList(GeografijaDAO.getInstance().gradovi()));
+    private void okButtonAction(ActionEvent event) {
+        String userInputNaziv = fieldNaziv.getText();
+        Grad selectedGrad = choiceGrad.getValue();
+
+        boolean validInput = validateInput(userInputNaziv, selectedGrad);
+
+        if (validInput) {
+            Drzava novaDrzava = new Drzava(noviID, userInputNaziv, selectedGrad.getGradID());
+            dao.dodajDrzavu(novaDrzava);
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            stage.close();
+        }
+
     }
 
-    @FXML
-    private void validateInputDrzavaNaziv(){
-        String userInput = fieldNaziv.getText();
+    private boolean validateInput(String naziv, Grad selectedGrad) {
+        boolean isValid = true;
 
-        if(userInput.isEmpty()){
+        if (naziv.isEmpty()) {
             fieldNaziv.setStyle("-fx-border-color: red; -fx-background-color: #ffd4d4;");
-        }
-        else{
+            isValid = false;
+        } else {
             fieldNaziv.setStyle("");
         }
+
+        if (selectedGrad == null) {
+            isValid = false;
+        }
+
+        return isValid;
     }
 
 }

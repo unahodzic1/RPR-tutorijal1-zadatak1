@@ -75,7 +75,7 @@ public class Grad implements Serializable {
 
     @Override
     public String toString() {
-        return "Naziv: " + naziv;
+        return naziv.get();
     }
 
     @Override

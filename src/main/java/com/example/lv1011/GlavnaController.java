@@ -3,6 +3,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,7 +68,16 @@ public class GlavnaController {
             }
 
         });
-        
+
+        dao.sviGradovi().addListener((ListChangeListener<Grad>) change -> {
+            while (change.next()) {
+                if (change.wasAdded()) {
+                    tableViewGradovi.getItems().addAll(change.getAddedSubList());
+                    tableViewGradovi.refresh();
+                }
+            }
+        });
+
         tableViewGradovi.setItems(dao.sviGradovi());
     }
 
@@ -114,7 +124,6 @@ public class GlavnaController {
             dao.obrisiGrad(grad);
             tableViewGradovi.getItems().remove(odabraniGrad);
         }
-
     }
 
 }
