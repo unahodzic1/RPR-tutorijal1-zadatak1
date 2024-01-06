@@ -64,7 +64,7 @@ public class GlavnaController {
             if (drzava != null) {
                 return new SimpleStringProperty(drzava.getNaziv());
             } else {
-                return new SimpleStringProperty("null");
+                return new SimpleStringProperty("Nema drzave u bazi");
             }
 
         });
@@ -97,6 +97,7 @@ public class GlavnaController {
             GradController gradKontroler = loader.getController();
             Scene scene = new Scene(root, 300, 150);
             Stage stage = new Stage();
+            stage.setTitle("Grad");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();
@@ -114,6 +115,7 @@ public class GlavnaController {
             DrzavaController drzavaKontroler = loader.getController();
             Scene scene = new Scene(root, 300, 150);
             Stage stage = new Stage();
+            stage.setTitle("Drzava");
             stage.setScene(scene);
             stage.setResizable(false);
             stage.show();

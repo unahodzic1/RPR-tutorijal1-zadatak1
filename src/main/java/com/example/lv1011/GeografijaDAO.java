@@ -15,15 +15,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class GeografijaDAO {
-    private BooleanProperty potrebnoAzuriranjeGlavnaController = new SimpleBooleanProperty(false);
-    public static int brojacDrzava = 3;
-    public static int brojacGrad = 5;
     private static GeografijaDAO singleton = null;
     private Connection konekcija;
     private ObservableList<Grad> gradovi = FXCollections.observableArrayList();
     private ObservableList<Drzava> drzave = FXCollections.observableArrayList();
     private ObjectProperty<Grad> trenutniGrad = new SimpleObjectProperty<>();
     private ObjectProperty<Drzava> trenutnaDrzava = new SimpleObjectProperty<>();
+    private BooleanProperty potrebnoAzuriranjeGlavnaController = new SimpleBooleanProperty(false);
+
+    // svi pripremljeni upiti
 
     private PreparedStatement izmijeniGradNaziv;
     private PreparedStatement izmijeniGradBrojStanovnika;
@@ -38,15 +38,11 @@ public class GeografijaDAO {
     private PreparedStatement drzaveIspis;
     private PreparedStatement nadjiGrad;
 
-    private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno, obrisiGrad, nadjiDrzavu2;
-
-    public ObservableList<Grad> getDataList() {
-        return gradovi;
-    }
+    private PreparedStatement sviGradovi, sveDrzave, obrisiGrad, nadjiDrzavu2;
 
     private GeografijaDAO() {
         try {
-            konekcija = DriverManager.getConnection("jdbc:sqlite:baza.db");
+            konekcija = DriverManager.getConnection("jdbc:sqlite:baza1.db");
             izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
             gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
             glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
@@ -61,7 +57,6 @@ public class GeografijaDAO {
             nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
             sviGradovi = konekcija.prepareStatement("SELECT * FROM grad");
             sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
-           // drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
             obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
             nadjiDrzavu2 = konekcija.prepareStatement("SELECT * FROM drzava WHERE id = ?");
         } catch (SQLException e) {
@@ -81,7 +76,6 @@ public class GeografijaDAO {
                 nadjiGrad = konekcija.prepareStatement("SELECT * FROM grad WHERE naziv = ?");
                 sviGradovi = konekcija.prepareStatement("SELECT * FROM grad");
                 sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
-              //  drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
                 obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
                 nadjiDrzavu2 = konekcija.prepareStatement("SELECT * FROM drzava WHERE id = ?");
             }

@@ -47,7 +47,7 @@ public class GradController {
         String userInputBrojStanovnika = fieldBrojStanovnika.getText();
         Drzava selectedDrzava = choiceDrzava.getValue();
 
-        boolean validInput = validateInput(userInputNaziv, userInputBrojStanovnika, selectedDrzava);
+        boolean validInput = validirajUnos(userInputNaziv, userInputBrojStanovnika, selectedDrzava);
 
         if (validInput) {
             Grad noviGrad = new Grad(noviID, userInputNaziv, Integer.parseInt(userInputBrojStanovnika), selectedDrzava.getDrzavaID());
@@ -89,7 +89,7 @@ public class GradController {
 
     }
 
-    private boolean validateInput(String naziv, String brojStanovnika, Drzava selectedDrzava) {
+    private boolean validirajUnos(String naziv, String brojStanovnika, Drzava selectedDrzava) {
         boolean isValid = true;
 
         if (naziv.isEmpty()) {

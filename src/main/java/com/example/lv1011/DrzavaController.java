@@ -40,7 +40,7 @@ public class DrzavaController {
         String userInputNaziv = fieldNaziv.getText();
         Grad selectedGrad = choiceGrad.getValue();
 
-        boolean validInput = validateInput(userInputNaziv, selectedGrad);
+        boolean validInput = validirajUnos(userInputNaziv, selectedGrad);
 
         if (validInput) {
             Drzava novaDrzava = new Drzava(noviID, userInputNaziv, selectedGrad.getGradID());
@@ -51,7 +51,7 @@ public class DrzavaController {
 
     }
 
-    private boolean validateInput(String naziv, Grad selectedGrad) {
+    private boolean validirajUnos(String naziv, Grad selectedGrad) {
         boolean isValid = true;
 
         if (naziv.isEmpty()) {
