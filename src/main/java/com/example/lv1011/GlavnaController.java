@@ -71,14 +71,20 @@ public class GlavnaController {
 
         dao.sviGradovi().addListener((ListChangeListener<Grad>) change -> {
             while (change.next()) {
-                if (change.wasAdded()) {
-                    tableViewGradovi.getItems().clear(); // Očisti trenutne podatke
-                    tableViewGradovi.getItems().addAll(change.getAddedSubList());
-                    tableViewGradovi.refresh();
+                if (change.wasAdded() || change.wasRemoved()) {
+                    tableViewGradovi.setItems(dao.sviGradovi());
                 }
             }
         });
 
+        tableViewGradovi.setItems(dao.sviGradovi());
+
+        dao.potrebnoAzuriranjeGlavnaControllerProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                tableViewGradovi.setItems(dao.sviGradovi());
+                dao.setPotrebnoAzuriranjeGlavnaController(false);
+            }
+        });
 
         tableViewGradovi.setItems(dao.sviGradovi());
     }

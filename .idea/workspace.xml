@@ -34,8 +34,8 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.lv1011.HelloApplication" />
+    <configuration name="GradoviApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.lv1011.GradoviApplication" />
       <module name="lv10-11" />
       <extension name="coverage">
         <pattern>
@@ -49,7 +49,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.GradoviApplication" />
       </list>
     </recent_temporary>
   </component>

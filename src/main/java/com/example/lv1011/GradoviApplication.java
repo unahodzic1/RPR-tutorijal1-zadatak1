@@ -6,7 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-public class HelloApplication extends Application {
+public class GradoviApplication extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws Exception {

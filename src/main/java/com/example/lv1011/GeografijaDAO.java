@@ -1,5 +1,7 @@
 package com.example.lv1011;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +15,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class GeografijaDAO {
+    private BooleanProperty potrebnoAzuriranjeGlavnaController = new SimpleBooleanProperty(false);
     public static int brojacDrzava = 3;
     public static int brojacGrad = 5;
     private static GeografijaDAO singleton = null;
@@ -96,6 +99,18 @@ public class GeografijaDAO {
     }
 
     public static void removeInstance() throws SQLException { singleton.konekcija.close(); singleton = null; }
+
+    public boolean isPotrebnoAzuriranjeGlavnaController() {
+        return potrebnoAzuriranjeGlavnaController.get();
+    }
+
+    public BooleanProperty potrebnoAzuriranjeGlavnaControllerProperty() {
+        return potrebnoAzuriranjeGlavnaController;
+    }
+
+    public void setPotrebnoAzuriranjeGlavnaController(boolean potrebnoAzuriranjeGlavnaController) {
+        this.potrebnoAzuriranjeGlavnaController.set(potrebnoAzuriranjeGlavnaController);
+    }
 
     // LV11 visenitno
 

@@ -80,6 +80,8 @@ public class GradController {
                 dao.dodajGrad(noviGrad);
             }
 
+            dao.setPotrebnoAzuriranjeGlavnaController(true);
+
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.close();
 
