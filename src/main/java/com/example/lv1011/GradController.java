@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.text.ChoiceFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GradController {
 
@@ -53,9 +55,37 @@ public class GradController {
 
         if (validInput) {
             Grad noviGrad = new Grad(noviID, userInputNaziv, Integer.parseInt(userInputBrojStanovnika), selectedDrzava.getDrzavaID());
-            dao.dodajGrad(noviGrad);
+
+            // ako postoji grad onda se samo update podaci
+            
+            List<Grad> sviGradovi = dao.gradovi();
+            boolean gradPostoji = false;
+
+            for (Grad x : sviGradovi) {
+                if (x.getNaziv().equals(noviGrad.getNaziv()) || x.getBrojStanovnika() == noviGrad.getBrojStanovnika()) {
+                    gradPostoji = true;
+                    // promjena naziva grada
+                    if (!x.getNaziv().equals(noviGrad.getNaziv()) && (x.getBrojStanovnika() == Integer.parseInt(userInputBrojStanovnika)) && (x.getDrzavaID() == selectedDrzava.getDrzavaID())) {
+                        dao.izmijeniGradNaziv(noviGrad, userInputNaziv);
+                    }
+                    // promjena broja stanovnika
+                    if (x.getBrojStanovnika() != noviGrad.getBrojStanovnika() && x.getNaziv().equals(noviGrad.getNaziv()) && (x.getDrzavaID() == selectedDrzava.getDrzavaID())) {
+                        dao.izmijeniGradBrojSt(x, Integer.parseInt(userInputBrojStanovnika));
+                    }
+                    if(x.getBrojStanovnika() == noviGrad.getBrojStanovnika() && x.getNaziv().equals(noviGrad.getNaziv()) && (x.getDrzavaID() != selectedDrzava.getDrzavaID())){
+                        dao.izmijeniGradDrzava(x, selectedDrzava.getNaziv());
+                    }
+                    break;
+                }
+            }
+
+            if (!gradPostoji) {
+                dao.dodajGrad(noviGrad);
+            }
+
             Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
             stage.close();
+
         }
 
     }
