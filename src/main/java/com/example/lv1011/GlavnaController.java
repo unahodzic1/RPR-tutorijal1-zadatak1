@@ -1,5 +1,6 @@
 package com.example.lv1011;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,16 +37,38 @@ public class GlavnaController {
     private TableColumn<Grad, Integer> colGradStanovnika;
 
     @FXML
-    private TableColumn<Drzava, String> colGradDrzava;
+    private TableColumn<Grad, String> colGradDrzava;
+
+//    @FXML
+//    public void initialize() {
+//        dao = GeografijaDAO.getInstance();
+//        tableViewGradovi.setItems(dao.sviGradovi());
+//        colGradId.setCellValueFactory(new PropertyValueFactory<>("gradID"));
+//        colGradNaziv.setCellValueFactory(new PropertyValueFactory<>("naziv"));
+//        colGradStanovnika.setCellValueFactory(new PropertyValueFactory<>("brojStanovnika"));
+//        colGradDrzava.setCellValueFactory(new PropertyValueFactory<>("drzavaID")); // log stavi ime grada a ne drzave, kako povezati te dvije tabele??
+//    }
 
     @FXML
     public void initialize() {
         dao = GeografijaDAO.getInstance();
-        tableViewGradovi.setItems(dao.sviGradovi());
+
         colGradId.setCellValueFactory(new PropertyValueFactory<>("gradID"));
         colGradNaziv.setCellValueFactory(new PropertyValueFactory<>("naziv"));
         colGradStanovnika.setCellValueFactory(new PropertyValueFactory<>("brojStanovnika"));
-        colGradDrzava.setCellValueFactory(new PropertyValueFactory<>("drzavaID")); // log stavi ime grada a ne drzave, kako povezati te dvije tabele??
+
+        colGradDrzava.setCellValueFactory(cellData -> {
+            Grad grad = cellData.getValue();
+            Drzava drzava = dao.nadjiDrzavu2(grad.getDrzavaID());
+            if (drzava != null) {
+                return new SimpleStringProperty(drzava.getNaziv());
+            } else {
+                return new SimpleStringProperty("null");
+            }
+
+        });
+        
+        tableViewGradovi.setItems(dao.sviGradovi());
     }
 
     @FXML
@@ -91,7 +114,7 @@ public class GlavnaController {
             dao.obrisiGrad(grad);
             tableViewGradovi.getItems().remove(odabraniGrad);
         }
-        
+
     }
 
 }

@@ -35,11 +35,11 @@ public class GeografijaDAO {
     private PreparedStatement drzaveIspis;
     private PreparedStatement nadjiGrad;
 
-    private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno, obrisiGrad;
+    private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno, obrisiGrad, nadjiDrzavu2;
 
     private GeografijaDAO() {
         try {
-            konekcija = DriverManager.getConnection("jdbc:sqlite:baza.db");
+            konekcija = DriverManager.getConnection("jdbc:sqlite:baza1.db");
             izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
             gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
             glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
@@ -56,6 +56,7 @@ public class GeografijaDAO {
             sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
            // drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
             obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
+            nadjiDrzavu2 = konekcija.prepareStatement("SELECT * FROM drzava WHERE id = ?");
         } catch (SQLException e) {
             regenerisiBazu();
             try {
@@ -75,6 +76,7 @@ public class GeografijaDAO {
                 sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
               //  drzaveDodatno = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, d.naziv FROM drzava d, grad g WHERE g.drzava=d.id");
                 obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
+                nadjiDrzavu2 = konekcija.prepareStatement("SELECT * FROM drzava WHERE id = ?");
             }
             catch (SQLException e1){
                 e1.printStackTrace();
@@ -152,7 +154,7 @@ public class GeografijaDAO {
 
     // Zadatak 2
     // metoda iz predavanja
-    private void regenerisiBazu() {
+    public void regenerisiBazu() {
         Scanner ulaz = null;
         try{
             ulaz = new Scanner(new FileInputStream("bazaRPR.db.sql")); // povezujemo se sa SQL dump datotekom
@@ -298,6 +300,25 @@ public class GeografijaDAO {
                     int gradID = rs.getInt("glavni_grad");
 
                     vratiDrzavu = new Drzava(drzavaID, drzava, gradID);
+                }
+            }
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return vratiDrzavu;
+    }
+
+    public Drzava nadjiDrzavu2(int id){
+        Drzava vratiDrzavu = null;
+        try{
+            nadjiDrzavu2.setInt(1, id);
+            try(ResultSet rs = nadjiDrzavu2.executeQuery()){
+                while (rs.next()) {
+                    String naziv = rs.getString("naziv");
+                    int gradID = rs.getInt("glavni_grad");
+
+                    vratiDrzavu = new Drzava(id, naziv, gradID);
                 }
             }
         }

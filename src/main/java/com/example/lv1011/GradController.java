@@ -12,7 +12,7 @@ import java.text.ChoiceFormat;
 public class GradController {
 
     @FXML
-    private TextField fieldNaziv;
+    private TextField fieldNaziv, fieldBrojStanovnika;
 
     @FXML
     private Label labelNaziv;
@@ -32,8 +32,11 @@ public class GradController {
     }
 
     @FXML
-    private void validateInputGradNaziv(){
+    private void validateInputGrad(){
         String userInput = fieldNaziv.getText();
+        String userInput2 = fieldBrojStanovnika.getText();
+
+        // naziv ne smije ostati prazan
 
         if(userInput.isEmpty()){
             fieldNaziv.setStyle("-fx-border-color: red; -fx-background-color: #ffd4d4;");
@@ -41,8 +44,16 @@ public class GradController {
         else{
             fieldNaziv.setStyle("");
         }
-    }
 
-    // pokusati dodati validaciju za polje brojStanovnika, da mora biti pozitivan cijeli broj
+        // brojStanovnika mora biti cijeli pozitivni broj
+
+        if(userInput2.contains("-") || userInput2.contains(",") || userInput2.contains(".")){
+            fieldBrojStanovnika.setStyle("-fx-border-color: red; -fx-background-color: #ffd4d4;");
+        }
+        else{
+            fieldBrojStanovnika.setStyle("");
+        }
+
+    }
 
 }
