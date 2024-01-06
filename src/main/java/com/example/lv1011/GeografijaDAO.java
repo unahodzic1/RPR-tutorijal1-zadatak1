@@ -37,9 +37,13 @@ public class GeografijaDAO {
 
     private PreparedStatement sviGradovi, sveDrzave, drzaveDodatno, obrisiGrad, nadjiDrzavu2;
 
+    public ObservableList<Grad> getDataList() {
+        return gradovi;
+    }
+
     private GeografijaDAO() {
         try {
-            konekcija = DriverManager.getConnection("jdbc:sqlite:baza1.db");
+            konekcija = DriverManager.getConnection("jdbc:sqlite:baza.db");
             izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
             gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
             glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
@@ -93,7 +97,39 @@ public class GeografijaDAO {
 
     public static void removeInstance() throws SQLException { singleton.konekcija.close(); singleton = null; }
 
-    // LV10/11
+    // LV11 visenitno
+
+//    public synchronized void obrisiSveUnose() {
+//        try {
+//            try (Statement stmt = konekcija.createStatement()) {
+//                stmt.executeUpdate("DELETE FROM grad");
+//            }
+//            try (Statement stmt = konekcija.createStatement()) {
+//                stmt.executeUpdate("DELETE FROM drzava");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public synchronized void unosPredefinisanihPodataka() {
+//        try {
+//            // unos podataka u tabelu grad
+//            try (Statement stmt = konekcija.createStatement()) {
+//                stmt.executeUpdate("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Beograd', 1100000, 1)");
+//                stmt.executeUpdate("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'Novi Sad', 300000, 1)");
+//                stmt.executeUpdate("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Zagreb', 800000, 2)");
+//            }
+//            // unos podataka u tabelu drzava
+//            try (Statement stmt = konekcija.createStatement()) {
+//                stmt.executeUpdate("INSERT INTO drzava (id, naziv) VALUES (1, 'Srbija')");
+//                stmt.executeUpdate("INSERT INTO drzava (id, naziv) VALUES (2, 'Hrvatska')");
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     // treba mi vratiti i naziv drzave
     public ObservableList<Grad> sviGradovi(){
         ObservableList<Grad> rezultat = FXCollections.observableArrayList();
@@ -114,9 +150,7 @@ public class GeografijaDAO {
         return rezultat;
     }
 
-    // Helper method to get country name based on drzavaID
     private String getDrzavaNaziv(int drzavaID) {
-        // Modify this query based on your database schema
         String query = "SELECT naziv FROM drzava WHERE id = ?";
         try (PreparedStatement statement = konekcija.prepareStatement(query)) {
             statement.setInt(1, drzavaID);

@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.text.ChoiceFormat;
 import java.util.ArrayList;
@@ -20,9 +19,6 @@ public class GradController {
     private static int noviID = 6;
 
     private GeografijaDAO dao;
-
-    @FXML
-    private TableView<Grad> tableViewGradovi;
 
     @FXML
     private TextField fieldNaziv, fieldBrojStanovnika;
@@ -57,7 +53,7 @@ public class GradController {
             Grad noviGrad = new Grad(noviID, userInputNaziv, Integer.parseInt(userInputBrojStanovnika), selectedDrzava.getDrzavaID());
 
             // ako postoji grad onda se samo update podaci
-            
+
             List<Grad> sviGradovi = dao.gradovi();
             boolean gradPostoji = false;
 
@@ -72,6 +68,7 @@ public class GradController {
                     if (x.getBrojStanovnika() != noviGrad.getBrojStanovnika() && x.getNaziv().equals(noviGrad.getNaziv()) && (x.getDrzavaID() == selectedDrzava.getDrzavaID())) {
                         dao.izmijeniGradBrojSt(x, Integer.parseInt(userInputBrojStanovnika));
                     }
+                    // promjena drzave
                     if(x.getBrojStanovnika() == noviGrad.getBrojStanovnika() && x.getNaziv().equals(noviGrad.getNaziv()) && (x.getDrzavaID() != selectedDrzava.getDrzavaID())){
                         dao.izmijeniGradDrzava(x, selectedDrzava.getNaziv());
                     }

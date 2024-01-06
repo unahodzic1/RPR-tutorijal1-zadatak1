@@ -72,11 +72,13 @@ public class GlavnaController {
         dao.sviGradovi().addListener((ListChangeListener<Grad>) change -> {
             while (change.next()) {
                 if (change.wasAdded()) {
+                    tableViewGradovi.getItems().clear(); // Očisti trenutne podatke
                     tableViewGradovi.getItems().addAll(change.getAddedSubList());
                     tableViewGradovi.refresh();
                 }
             }
         });
+
 
         tableViewGradovi.setItems(dao.sviGradovi());
     }
