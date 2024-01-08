@@ -39,10 +39,11 @@ public class GeografijaDAO {
     private PreparedStatement nadjiGrad;
 
     private PreparedStatement sviGradovi, sveDrzave, obrisiGrad, nadjiDrzavu2;
+    private PreparedStatement obrisiSveGrad, obrisiSveDrzava, unesiGradovi, unesiDrzave;
 
     private GeografijaDAO() {
         try {
-            konekcija = DriverManager.getConnection("jdbc:sqlite:baza1.db");
+            konekcija = DriverManager.getConnection("jdbc:sqlite:baza.db");
             izmijeniGradNaziv = konekcija.prepareStatement("UPDATE grad SET naziv = ? WHERE id = ?");
             gradoviIspis = konekcija.prepareStatement("SELECT id, naziv, broj_stanovnika, drzava FROM grad ORDER BY broj_stanovnika DESC");
             glavniGrad = konekcija.prepareStatement("SELECT g.id, g.naziv, g.broj_stanovnika, g.drzava FROM grad g, drzava d WHERE d.glavni_grad = g.id AND d.naziv = ?");
@@ -59,6 +60,10 @@ public class GeografijaDAO {
             sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
             obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
             nadjiDrzavu2 = konekcija.prepareStatement("SELECT * FROM drzava WHERE id = ?");
+            obrisiSveDrzava = konekcija.prepareStatement("DELETE FROM drzava");
+            obrisiSveGrad = konekcija.prepareStatement("DELETE FROM grad");
+            unesiGradovi = konekcija.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (?, ?, ?, ?)");
+            unesiDrzave = konekcija.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (?, ?, ?)");
         } catch (SQLException e) {
             regenerisiBazu();
             try {
@@ -78,6 +83,10 @@ public class GeografijaDAO {
                 sveDrzave = konekcija.prepareStatement("SELECT * FROM drzava");
                 obrisiGrad = konekcija.prepareStatement("DELETE FROM grad WHERE naziv = ?");
                 nadjiDrzavu2 = konekcija.prepareStatement("SELECT * FROM drzava WHERE id = ?");
+                obrisiSveDrzava = konekcija.prepareStatement("DELETE FROM drzava");
+                obrisiSveGrad = konekcija.prepareStatement("DELETE FROM grad");
+                unesiGradovi = konekcija.prepareStatement("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (?, ?, ?, ?)");
+                unesiDrzave = konekcija.prepareStatement("INSERT INTO drzava (id, naziv, glavni_grad) VALUES (?, ?, ?)");
             }
             catch (SQLException e1){
                 e1.printStackTrace();
@@ -108,36 +117,64 @@ public class GeografijaDAO {
 
     // LV11 visenitno
 
-//    public synchronized void obrisiSveUnose() {
-//        try {
-//            try (Statement stmt = konekcija.createStatement()) {
-//                stmt.executeUpdate("DELETE FROM grad");
-//            }
-//            try (Statement stmt = konekcija.createStatement()) {
-//                stmt.executeUpdate("DELETE FROM drzava");
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public synchronized void unosPredefinisanihPodataka() {
-//        try {
-//            // unos podataka u tabelu grad
-//            try (Statement stmt = konekcija.createStatement()) {
-//                stmt.executeUpdate("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (1, 'Beograd', 1100000, 1)");
-//                stmt.executeUpdate("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (2, 'Novi Sad', 300000, 1)");
-//                stmt.executeUpdate("INSERT INTO grad (id, naziv, broj_stanovnika, drzava) VALUES (3, 'Zagreb', 800000, 2)");
-//            }
-//            // unos podataka u tabelu drzava
-//            try (Statement stmt = konekcija.createStatement()) {
-//                stmt.executeUpdate("INSERT INTO drzava (id, naziv) VALUES (1, 'Srbija')");
-//                stmt.executeUpdate("INSERT INTO drzava (id, naziv) VALUES (2, 'Hrvatska')");
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    public synchronized void obrisiSveUnose() {
+        try {
+            obrisiSveGrad.executeUpdate();
+            obrisiSveDrzava.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized void unosPredefinisanihPodataka() {
+        try {
+            // Grad
+            try (Statement stmt = konekcija.createStatement()) {
+                unesiGradovi.setInt(1, 1);
+                unesiGradovi.setString(2, "Sarajevo");
+                unesiGradovi.setInt(3, 10000);
+                unesiGradovi.setInt(4, 1);
+                unesiGradovi.executeUpdate();
+
+                unesiGradovi.setInt(1, 2);
+                unesiGradovi.setString(2, "Kljuc");
+                unesiGradovi.setInt(3, 13000);
+                unesiGradovi.setInt(4, 1);
+                unesiGradovi.executeUpdate();
+
+                unesiGradovi.setInt(1, 3);
+                unesiGradovi.setString(2, "Oslo");
+                unesiGradovi.setInt(3, 1500);
+                unesiGradovi.setInt(4, 2);
+                unesiGradovi.executeUpdate();
+
+                unesiGradovi.setInt(1, 4);
+                unesiGradovi.setString(2, "Milano");
+                unesiGradovi.setInt(3, 14500);
+                unesiGradovi.setInt(4, 3);
+                unesiGradovi.executeUpdate();
+            }
+            // Drzava
+            try (Statement stmt = konekcija.createStatement()) {
+                unesiDrzave.setInt(1, 1);
+                unesiDrzave.setString(2, "Bosna i Hercegovina");
+                unesiDrzave.setInt(3, 1);
+                unesiDrzave.executeUpdate();
+
+                unesiDrzave.setInt(1, 2);
+                unesiDrzave.setString(2, "Norveska");
+                unesiDrzave.setInt(3, 3);
+                unesiDrzave.executeUpdate();
+
+                unesiDrzave.setInt(1, 3);
+                unesiDrzave.setString(2, "Italija");
+                unesiDrzave.setInt(3, 4);
+                unesiDrzave.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     // treba mi vratiti i naziv drzave
     public ObservableList<Grad> sviGradovi(){

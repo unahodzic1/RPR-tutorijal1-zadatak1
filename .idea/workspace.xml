@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -29,11 +30,21 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.lv1011" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.GradoviApplication">
     <configuration name="GradoviApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.lv1011.GradoviApplication" />
       <module name="lv10-11" />
@@ -47,9 +58,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GeografijaDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lv10-11" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lv1011.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lv1011" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lv1011.GeografijaDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeografijaDAOTest.testDodajDrzavu" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lv10-11" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lv1011.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lv1011" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lv1011.GeografijaDAOTest" />
+      <option name="METHOD_NAME" value="testDodajDrzavu" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeografijaDAOTest.testDodajGrad" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="lv10-11" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.lv1011.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.lv1011" />
+      <option name="MAIN_CLASS_NAME" value="com.example.lv1011.GeografijaDAOTest" />
+      <option name="METHOD_NAME" value="testDodajGrad" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.GradoviApplication" />
+        <item itemvalue="JUnit.GeografijaDAOTest.testDodajGrad" />
+        <item itemvalue="JUnit.GeografijaDAOTest" />
+        <item itemvalue="JUnit.GeografijaDAOTest.testDodajDrzavu" />
       </list>
     </recent_temporary>
   </component>
@@ -63,5 +124,16 @@
       <updated>1703514619068</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/test/com/example/lv1011/GeografijaDAOTest.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

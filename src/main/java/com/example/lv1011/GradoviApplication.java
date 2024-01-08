@@ -11,8 +11,10 @@ public class GradoviApplication extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws Exception {
         GeografijaDAO dao = GeografijaDAO.getInstance();
-//        dao.obrisiSveUnose();
-//        dao.unosPredefinisanihPodataka();
+
+        dao.obrisiSveUnose();
+        dao.unosPredefinisanihPodataka();
+
         Parent root = FXMLLoader.load(getClass().getResource("glavna.fxml"));
         stage.setTitle("Gradovi svijeta");
         stage.setScene(new Scene(root, 500, 500));
