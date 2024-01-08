@@ -69,6 +69,10 @@ public class GradController {
                     if(x.getBrojStanovnika() == noviGrad.getBrojStanovnika() && x.getNaziv().equals(noviGrad.getNaziv()) && (x.getDrzavaID() != selectedDrzava.getDrzavaID())){
                         dao.izmijeniGradDrzava(x, selectedDrzava.getNaziv());
                     }
+                    if(x.getBrojStanovnika() != noviGrad.getBrojStanovnika() && x.getNaziv().equals(noviGrad.getNaziv()) && (x.getDrzavaID() != selectedDrzava.getDrzavaID())){
+                        dao.izmijeniGradDrzava(x, selectedDrzava.getNaziv());
+                        dao.izmijeniGradBrojSt(x, Integer.parseInt(userInputBrojStanovnika));
+                    }
                     break;
                 }
             }
@@ -108,6 +112,15 @@ public class GradController {
         }
 
         return isValid;
+    }
+
+    public void popuniPodacima(Grad grad) {
+        if (grad != null) {
+            fieldNaziv.setText(grad.getNaziv());
+            fieldBrojStanovnika.setText(String.valueOf(grad.getBrojStanovnika()));
+            // kako postaviti choicebox????
+            choiceDrzava.setValue(dao.nadjiDrzavu(grad.getNaziv()));
+        }
     }
 
 }

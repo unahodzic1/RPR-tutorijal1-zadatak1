@@ -85,6 +85,8 @@ public class GlavnaController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("grad.fxml"));
             Parent root = loader.load();
             GradController gradKontroler = loader.getController();
+            Grad odabraniGrad = tableViewGradovi.getSelectionModel().getSelectedItem();
+            gradKontroler.popuniPodacima(odabraniGrad);
             Scene scene = new Scene(root, 300, 150);
             Stage stage = new Stage();
             stage.setTitle("Grad");
