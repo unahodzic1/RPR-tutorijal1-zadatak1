@@ -44,7 +44,7 @@
       <recent name="com.example.lv1011" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.GradoviApplication">
+  <component name="RunManager" selected="JUnit.GeografijaDAOTest">
     <configuration name="GradoviApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.lv1011.GradoviApplication" />
       <module name="lv10-11" />
@@ -107,9 +107,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GeografijaDAOTest" />
         <item itemvalue="Application.GradoviApplication" />
         <item itemvalue="JUnit.GeografijaDAOTest.testDodajGrad" />
-        <item itemvalue="JUnit.GeografijaDAOTest" />
         <item itemvalue="JUnit.GeografijaDAOTest.testDodajDrzavu" />
       </list>
     </recent_temporary>
@@ -130,7 +130,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/test/com/example/lv1011/GeografijaDAOTest.java</url>
-          <line>8</line>
+          <line>9</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
