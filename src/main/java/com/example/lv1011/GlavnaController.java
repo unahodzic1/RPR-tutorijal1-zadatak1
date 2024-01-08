@@ -40,16 +40,6 @@ public class GlavnaController {
     @FXML
     private TableColumn<Grad, String> colGradDrzava;
 
-//    @FXML
-//    public void initialize() {
-//        dao = GeografijaDAO.getInstance();
-//        tableViewGradovi.setItems(dao.sviGradovi());
-//        colGradId.setCellValueFactory(new PropertyValueFactory<>("gradID"));
-//        colGradNaziv.setCellValueFactory(new PropertyValueFactory<>("naziv"));
-//        colGradStanovnika.setCellValueFactory(new PropertyValueFactory<>("brojStanovnika"));
-//        colGradDrzava.setCellValueFactory(new PropertyValueFactory<>("drzavaID")); // log stavi ime grada a ne drzave, kako povezati te dvije tabele??
-//    }
-
     @FXML
     public void initialize() {
         dao = GeografijaDAO.getInstance();

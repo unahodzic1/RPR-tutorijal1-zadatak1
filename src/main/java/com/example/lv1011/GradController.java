@@ -24,9 +24,6 @@ public class GradController {
     private TextField fieldNaziv, fieldBrojStanovnika;
 
     @FXML
-    private Label labelNaziv;
-
-    @FXML
     private ChoiceBox<Drzava> choiceDrzava;
 
     @FXML

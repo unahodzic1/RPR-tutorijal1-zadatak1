@@ -18,9 +18,6 @@ public class DrzavaController {
     private TextField fieldNaziv;
 
     @FXML
-    private Label labelNaziv;
-
-    @FXML
     private ChoiceBox<Grad> choiceGrad;
 
     @FXML
